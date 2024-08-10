@@ -1,0 +1,92 @@
+@import "../abstract/variables";
+@import "../abstract/mixins";
+@import "../components/buttons";
+@import "../components/separator";
+
+.content-container2 {
+    padding: 2vw;
+    background: linear-gradient(to bottom, #ffffff, #dde0f0); /* Degradado de #5161C1 a blanco */
+    height: 80.5vh;
+
+    .row {
+        margin: 0;
+        @include flex-container(row, space-around, flex-end);
+    }
+
+    .custom-card {
+        margin: 1vw 0;
+        flex: 1; // Make all custom cards grow equally
+
+        .card {
+            @include flex-container(column, center, center);
+            background-color: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombreado para distinguir mejor las cartas */
+            padding: 4vw;
+            text-align: center;
+            min-height: 400px; // Increase minimum height for more height
+            max-height: 360px; // Increase maximum height for more height
+            width: 90%; // Make the card narrower
+
+            .card-icon {
+                font-size: 3rem;
+                color: $tertiary-color;
+                margin-bottom: 1.5rem;
+            }
+
+            .card-body {
+                @include flex-container(column, center, center);
+                flex-grow: 1; // Make the card body take up the remaining space
+                
+                .card-title {
+                    text-align: center;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+                .card-text {
+                    font-size: 1rem;
+                    color: #333;
+                    flex-grow: 1; // Make the text take up the remaining space
+                }
+            }
+        }
+    }
+}
+
+// Responsive adjustments
+@include mobile() {
+    .content-container2 {
+        height: 140vh;
+        padding: 1rem;
+
+        .row {
+            @include flex-container(column, center, center); // Stack cards vertically
+        }
+
+        .custom-card {
+            .card {
+                padding: 1rem;
+                width: 100%; // Make the card full width on mobile
+                min-height: auto; // Adjust min-height for mobile
+                max-height: auto; // Adjust max-height for mobile
+                
+                .card-icon {
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+                }
+                
+                .card-body {
+                    .card-title {
+                        font-size: 1.25rem;
+                    }
+                    .card-text {
+                        font-size: 0.875rem;
+                    }
+                }
+            }
+        }
+    }
+}

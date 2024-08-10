@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300');
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+.login-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  width: 100%;
+  max-width: 500px;
+}
+
+.modal-inner {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border-radius: .5rem;
+
+  .modal-top {
+    //que ek background sea una imagen:
+    // background: url('https://i.ibb.co/GJwBKPz/side-view-man-working-as-valet.jpg' ) no-repeat center center;
+    color: #fff;
+    padding: 2rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    text-align: center;
+
+    i {
+      font-size: 2.25rem;
+      margin-bottom: .25rem;
+      display: block;
+    }
+
+    h4 {
+      font-weight: 200;
+      margin-bottom: 0;
+    }
+  }
+
+  .modal-content {
+    background: #f5f5f5;
+    padding: 2rem;
+
+
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 1rem;
+
+      .form-control {
+        width: calc(100% - 20px); // Reduce el tamaño para que no toque los bordes
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .register-link {
+      margin-top: 1rem;
+      color: #007bff;
+      cursor: pointer;
+    }
+  }
+
+  .modal-bottom {
+    background: #fff;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid transparent;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+  }
+}
+
+.modal-btn {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: .75rem 2.25rem;
+  border-radius: 5px;
+  color: #424242;
+  margin: .5rem;
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: #2196F3;
+  }
+}
+
+.register-link {
+  position: relative;
+  left: 1rem; top: 1px;
+}
+
+.close-register {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #999;
+
+  &:hover, &:focus {
+    color: #999;
+    text-decoration: none;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 400;
+}

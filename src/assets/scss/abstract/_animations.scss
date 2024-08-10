@@ -1,0 +1,71 @@
+//LO HE HECHO EN MIXINS APRA DEFINIR LA DURACIÓN POR PARAMETRO
+
+@mixin fade-in($duración: 0.5s) {
+    animation: fade-in-animation $duración ease-in-out;
+  }
+  
+  @keyframes fade-in-animation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+// Mixin para animación de aparición desde la derecha
+@mixin aparecer-desde-derecha($duración: 0.5s) {
+  animation: aparecer-derecha $duración ease-out;
+}
+
+@keyframes aparecer-derecha {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Mixin para animación de aparición desde la izquierda
+@mixin aparecer-desde-izquierda($duración: 0.5s) {
+  animation: aparecer-izquierda $duración ease-out;
+}
+
+@keyframes aparecer-izquierda {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Mixin para animación de aparición desde arriba
+@mixin aparecer-desde-arriba($duración: 0.5s) {
+  animation: aparecer-arriba $duración ease-out;
+}
+
+@keyframes aparecer-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveToTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50px); 
+  }
+}

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300');
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+
+
+@include mobile {
+    /* Ajustes específicos para pantallas pequeñas */
+    .table td,
+    .table th {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+  
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tbody, 
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table td {
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+
+  .table td::before {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    content: attr(data-label);
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .table td.actions {
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 3vw;
+  }
+}

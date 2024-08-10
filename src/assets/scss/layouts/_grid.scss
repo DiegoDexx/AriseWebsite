@@ -1,0 +1,130 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+.carfly-landingpage {
+    display: grid;
+    grid-template-columns: repeat($grid-columns, 1fr);
+    //   grid-template-rows: auto 2fr auto;
+    gap: 20px; 
+    height: auto;
+    width: auto;
+    margin: 0 auto;
+
+
+    header {
+        grid-column-start: 1;
+        grid-column-end: calc($grid-columns + 1);
+        // border: 1px solid red;
+        height: 95vh; 
+
+        &--col-1-1 {
+            grid-column-start: 1;
+            grid-column-end: calc($grid-columns + 1);
+
+        }
+
+    .row{
+        grid-column-start: 1;
+        grid-column-end: calc($grid-columns + 1);
+        // grid-row:2/2;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-rows: auto 2fr;
+
+        &--col-1-2 {
+            // border: 1px solid green;
+            grid-row: 2/3;
+            grid-column: span calc($grid-columns / 2);
+            @include mobile{
+                grid-column-start: 1;
+                grid-column-end: calc($grid-columns + 1);
+            }
+        }
+    }
+}
+
+    .row {
+        grid-column-start: 1;
+        grid-column-end: calc($grid-columns + 1);
+        // border: 1px solid red;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        height: $row-height; 
+
+        &__col-1-2 {
+            // border: 1px solid green;
+            grid-column: span calc($grid-columns / 6);
+        }
+
+        .col-1-1 {
+            grid-column-start: 1;
+            grid-column-end: $grid-base3-columns;
+        }
+
+        .col-1-3 {
+            // border: 1px solid purple;
+            // background-color: azure;
+            grid-column: span calc($grid-columns / 6); /*Nomenclatura reutilizable seria $grid-columns / 4 */
+        }
+
+        .col-1-4 {
+            // border: 1px solid rgb(124, 10, 0);
+            // background-color: rgb(166, 237, 237);
+            grid-column: span calc($grid-columns / $grid-columns); /*Nomenclatura reutilizable seria $grid-columns / 3 */
+        }
+
+        @include mobile(){
+            height: $row-mobile-height; //ESTA MEDIDA LA UTILIZO EN "VH" YA QUE DICHOS CONTENEDORES SE ADAPTARÁN AUTOMÁTICAMENTE, PODRÁ MODIFICARSE EN CASO DE QUERER
+                    //MAS ALTURA
+           
+        }
+    
+
+    }
+
+    .container-plans {
+        grid-column-start: 1;
+        grid-column-end: calc($grid-columns + 1);
+
+        .row {
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-row: auto;
+            gap: 3em;
+            width: 100%;
+            margin: 0 auto;
+            height: auto;
+
+
+            &--col-1-3 {
+                margin: 0 auto;
+                // grid-row: 2/2;
+                // border: 1px solid purple;
+                background-color: azure;
+                grid-column: span calc($grid-base3-columns / 3);
+
+            }
+        }
+
+        .row:last-child {
+          
+            height: auto;
+        }
+
+    }
+
+    .row.footer{
+
+        @include mobile(){
+                //EN ESTA FRAGMENTO, EN PANTALLA MÓVIL, DEFINIMOS QUE TODAS LAS COLUMNAS DEL FOOTER OCUPEN TODAS LAS COLUMNAS
+            .col-1-3,
+            .col-1-4{
+                grid-column-start: 1;
+                grid-column-end: calc($grid-columns + 1);
+            }
+        }
+    }
+
+}

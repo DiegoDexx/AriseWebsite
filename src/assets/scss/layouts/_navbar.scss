@@ -1,0 +1,126 @@
+@import "../abstract/variables";
+@import "../abstract/mixins";
+@import "../components/buttons";
+@import "../components/separator";
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  background-color: #000;
+  position: sticky; // Make navbar sticky
+  top: 0;
+  width: 100%;
+  z-index: 1000; // Ensure it stays above other elements
+  transition: background-color 0.3s ease; // Smooth transition for background color
+
+  @include flex-container(row, space-between, center);
+  padding: 0 16px;
+
+  .logo-container {
+    @include flex-container(row, center, center);
+    padding: 0px 5px;
+    height: auto;
+
+    img {
+      height: 90px;
+      object-fit: cover;
+    }
+  }
+
+  .menu-container {
+    @include flex-container(row, center, center);
+
+    a {
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+
+      &:hover {
+        text-decoration: underline;
+        background-color: #000;
+        color: #f2f2f2;
+      }
+    }
+
+    a.active {
+      background-color: #000000;
+      color: white;
+    }
+
+    .icon {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav {
+    @include flex-container(row, space-between, center);
+    position: relative;
+    padding: 0 1px;
+    width: 100%;
+    z-index: 1000;
+
+    .logo-container {
+      width: 70%;
+      align-items: center;
+      justify-content: flex-end;
+
+      img {
+        height: 75px;
+      }
+    }
+
+    .menu-container {
+      width: 15%;
+
+      a:not(.icon) {
+        display: none;
+      }
+
+      a.icon {
+        display: block;
+        justify-content: flex-end;
+        font-size: 24px;
+      }
+    }
+
+    &.responsive {
+      .menu-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #000;
+
+        a {
+          display: block;
+          text-align: left;
+          width: 100%;
+          padding: 10px 16px;
+        }
+
+        a.icon {
+          align-self: flex-end;
+          position: static;
+        }
+      }
+    }
+  }
+}
+
+// Add a scroll event listener to change the background color on scroll
+@media screen and (min-width: 601px) {
+  .topnav.scrolled {
+    background-color: rgba(0, 0, 0, 0.8); // Semi-transparent background on scroll
+  }
+}

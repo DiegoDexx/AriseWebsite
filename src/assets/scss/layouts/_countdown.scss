@@ -1,0 +1,84 @@
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .text-container {
+      flex: 1;
+      padding-right: 20px;
+  
+      h1 {
+        font-size: 1.8rem;
+        color: #333;
+        strong{
+          font-size: 2rem;
+        }
+  
+        @media (max-width: 768px) {
+          font-size: 1.2rem;
+          padding-right: 15px;
+          width: 120%;
+          margin: 0 auto;
+          strong{
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  
+    .timer-container {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+  
+      @media (max-width: 768px) {
+        flex-direction: row;
+        margin-top: 20px;
+        width: 100%;
+        justify-content: center;
+      }
+  
+      .time-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 2rem;
+        color: #333;
+  
+        .time {
+          font-size: 3rem;
+          font-weight: bold;
+          background-color: #333;
+          color: white;
+          padding: 15px;
+  
+          @media (max-width: 768px) {
+            font-size: 2rem;
+          }
+        }
+  
+        .label {
+          font-size: 1rem;
+          color: #777;
+  
+          @media (max-width: 768px) {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+  
