@@ -53,7 +53,7 @@ const BookingModal = ({ setShowBookingModal }) => {
     }
   
     try {
-      const response = await axios.post('http://localhost:8000/api/bookings', {
+      const response = await axios.post('https://ariseserver-production.up.railway.app/api/bookings', {
         product_id: product.productId,
         user_name: formData.user_name, // Asegúrate de que esto coincide
         user_email: formData.email,

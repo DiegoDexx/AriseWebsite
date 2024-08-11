@@ -15,7 +15,7 @@ const ProductList = () => {
   const [productData, setProductData] = useState(); // Corrige el nombre del estado
 
   useEffect(() => {
-    axios.get('http://localhost:8000/api/products')
+    axios.get('https://ariseserver-production.up.railway.app/api/products')
       .then(response => {
         const uniqueProducts = [];
         const seenColors = new Set();

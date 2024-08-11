@@ -74,7 +74,7 @@ const ProductPage = () => {
   const fetchProductDetails = (color, size) => {
     if (color && size) {
       axios
-        .get(`http://localhost:8000/api/products/size/${size}/color/${color}`)
+        .get(`https://ariseserver-production.up.railway.app/api/products/size/${size}/color/${color}`)
         .then((response) => {
           if (response.data.length > 0) {
             const productData = response.data[0];

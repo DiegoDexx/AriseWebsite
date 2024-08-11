@@ -10,14 +10,14 @@ const AdminPanel = () => {
     const fetchBookings = async () => {
       try {
         // Obtiene todas las reservas
-        const bookingsResponse = await axios.get('http://localhost:8000/api/bookings');
+        const bookingsResponse = await axios.get('https://ariseserver-production.up.railway.app/api/bookings');
         setBookings(bookingsResponse.data);
 
         // Crea un conjunto de product_id únicos a partir de las reservas
         const productIds = Array.from(new Set(bookingsResponse.data.map(booking => booking.product_id)));
 
         // Realiza múltiples solicitudes para obtener detalles de cada producto
-        const productsResponses = await Promise.all(productIds.map(id => axios.get(`http://localhost:8000/api/products/${id}`)));
+        const productsResponses = await Promise.all(productIds.map(id => axios.get(`https://ariseserver-production.up.railway.app/api/products/${id}`)));
 
         // Combina los datos de los productos obtenidos
         const allProducts = productsResponses.map(response => response.data);
