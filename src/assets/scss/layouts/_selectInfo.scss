@@ -97,12 +97,16 @@
     
     .description-content {
       font-size: 16px; // Tamaño de fuente mayor en pantallas grandes
+      text-align: center;
     }
 
     .delivery-info {
       flex-direction: row; // Distribuye los ítems horizontalmente en pantallas grandes
       justify-content: space-between;
       width: 75%; // Ancho ajustado en pantallas grandes
+      .info-item{
+        width: 100%;
+      }
     }
 
 
