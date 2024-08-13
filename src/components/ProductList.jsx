@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../hooks/axiosMethods'; // Importa apiClient
 import camiseta1 from '../assets/img/white (2).png';
 import beige1 from '../assets/img/beige (2).png';
 import { saveProductSelection } from '../functions/localStorage';
 import { getDiscount } from '../functions/functions';
 
-
-const discountPercentage = 20; // Porcentaje de descuento
-
+// Definición del porcentaje de descuento
+const discountPercentage = 20;
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
-  const [productData, setProductData] = useState(); // Corrige el nombre del estado
+  const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    axios.get('https://ariseserver-production.up.railway.app/api/products')
+    apiClient.get('/products') // Usa apiClient para realizar la solicitud
       .then(response => {
         const uniqueProducts = [];
         const seenColors = new Set();
@@ -44,14 +43,9 @@ const ProductList = () => {
   };
 
   // Función para calcular el precio con descuento
-  const getDiscount = (price, discountPercentage) => {
+  const calculateDiscount = (price, discountPercentage) => {
     return (price * (1 - discountPercentage / 100)).toFixed(2);
   };
-
-  // Ejemplo de uso del descuento (asegurarte de definir discountPercentage en tu código)
-  const discountPercentage = 20;
-  const discountedPrice = productData ? getDiscount(productData[0].price, discountPercentage) : null;
-
 
   return (
     <div className="product-list">
@@ -68,10 +62,10 @@ const ProductList = () => {
             />
             <h2 className="product-name">{product.color === 'white' ? 'Camiseta Arise Blanca' : 'Camiseta Arise Beige'}</h2>
             
-          <div className='price-container'>
-            <p className="original-price">€{product.price}</p>
-            <p className="discounted-price">€{discountedPrice}</p>
-          </div>
+            <div className='price-container'>
+              <p className="original-price">€{product.price}</p>
+              <p className="discounted-price">€{calculateDiscount(product.price, discountPercentage)}</p>
+            </div>
           </div>
         </Link>
       ))}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BookingModal from '../components/bookingModal';
+import apiClient from '../hooks/axiosMethods'; // Importa apiClient
 import axios from 'axios';
 import  SelectInfo  from '../components/SelectInfo';
 import { getProductSelection, saveItem, getItem } from '../functions/localStorage';
@@ -43,9 +44,6 @@ const ProductPage = () => {
       // Convertir el JSON string a un objeto JavaScript
       const product = JSON.parse(productString);
 
-      // Imprimir el objeto completo para verificar la estructura
-      // console.log('Producto recuperado de localStorage:', product);
-
       // Acceder a propiedades específicas del objeto
       if (product && product.productId) {
         console.log('fetching data with frontend with the id product...' + product.productId.productId);
@@ -73,8 +71,8 @@ const ProductPage = () => {
 
   const fetchProductDetails = (color, size) => {
     if (color && size) {
-      axios
-        .get(`https://ariseserver-production.up.railway.app/api/products/size/${size}/color/${color}`)
+      apiClient
+        .get(`/products/size/${size}/color/${color}`)
         .then((response) => {
           if (response.data.length > 0) {
             const productData = response.data[0];
