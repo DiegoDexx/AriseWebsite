@@ -95,10 +95,12 @@
     }
 
     
-    .description-content {
+    .description-content p {
       font-size: 16px; // Tamaño de fuente mayor en pantallas grandes
       text-align: center;
-
+      margin: 0 auto;
+    }
+     
       
     .delivery-info {
       flex-direction: row; // Distribuye los ítems horizontalmente en pantallas grandes
@@ -108,9 +110,7 @@
         width: 100%;
       }
     }
-    }
-
-
+    
 
   }
 }
