@@ -88,7 +88,7 @@
         margin-bottom: 1rem;
         text-align:left;
         @media (max-width: 800px) {
-          font-size: 28px;
+          font-size: 24px;
           text-align: center;
         }
     
@@ -372,7 +372,7 @@
             .price-container{
 
             .discounted-price {
-              font-size: 22px; // Tamaño de fuente más grande para destacarse
+              font-size: 18px; // Tamaño de fuente más grande para destacarse
                font-weight: 400; // Negrita para mayor énfasis
               color: #000000; // Un rojo vibrante que atrae la atención
               text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); // Sombra ligera para dar profundidad
@@ -380,7 +380,7 @@
             }
             
             .original-price {
-              font-size: 16px;
+              font-size: 12px;
               color: #888;
               text-decoration: line-through; // Para mostrar que es el precio original tachado
               margin-right: 10px;

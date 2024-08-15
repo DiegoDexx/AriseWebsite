@@ -24,7 +24,7 @@ const SelectInfo = ({ description }) => {
             checked={selectedOption === 'description'}
             onChange={handleOptionChange}
           />
-          Description
+          Descripción
         </label>
 
         <label
@@ -39,7 +39,7 @@ const SelectInfo = ({ description }) => {
             checked={selectedOption === 'details'}
             onChange={handleOptionChange}
           />
-          Details
+          Entrega
         </label>
       </div>
 

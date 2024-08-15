@@ -1502,7 +1502,7 @@ body {
 }
 @media (max-width: 800px) {
   .product-page .product-details h1 {
-    font-size: 28px;
+    font-size: 24px;
     text-align: center;
   }
 }
@@ -1738,14 +1738,14 @@ body {
     gap: 1px;
   }
   .product-page .product-details .price-container .discounted-price {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
     color: #000000;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     margin-right: 10px;
   }
   .product-page .product-details .price-container .original-price {
-    font-size: 16px;
+    font-size: 12px;
     color: #888;
     text-decoration: line-through;
     margin-right: 10px;
