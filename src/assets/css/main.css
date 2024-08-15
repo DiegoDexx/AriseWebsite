@@ -1068,6 +1068,19 @@ body {
   .menu-product-info .buttons label.active {
     color: #000;
   }
+  .menu-product-info .description-content p {
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .menu-product-info .delivery-info {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+  }
+  .menu-product-info .delivery-info .info-item {
+    width: 100%;
+  }
 }
 
 /* Ocultar botones de radio por defecto */
@@ -1500,6 +1513,7 @@ body {
   .product-page .product-details p {
     font-size: 14px;
     text-align: center;
+    margin: 0 auto;
   }
 }
 .product-page .product-details .price-container {
