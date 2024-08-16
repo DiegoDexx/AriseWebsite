@@ -8,17 +8,17 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('authToken'));
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('auth_token'));
 
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('auth_token');
     if (token) {
       setIsAuthenticated(true);
     }
   }, []);
 
   const login = (token) => {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('auth_token', token);
     setIsAuthenticated(true);
   };
 

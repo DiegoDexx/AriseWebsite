@@ -15,8 +15,8 @@ const Login = ({ onLoginSuccess }) => {
         const response = await axios.post('https://arise-app-44ac74ba4283.herokuapp.com/api/login', { email, password });
   
         if (response.data.token) {
-          const authToken = response.data.token;
-          saveItem('authToken', authToken);
+          const authToken = response.data.access_token;
+          saveItem('auth_token', authToken);
           onLoginSuccess();
 
           try {

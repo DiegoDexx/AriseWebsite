@@ -10,7 +10,7 @@ const AdminPanel = () => {
 
   useEffect(() => {
     // Verifica si hay un token de autenticación en el localStorage
-    const authToken = getItem('authToken');
+    const authToken = getItem('auth_token');
     if (authToken) {
       setIsLogged(true); // Usuario está logueado
     } else {
