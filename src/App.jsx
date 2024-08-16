@@ -8,6 +8,7 @@ import AdminPanel from './pages/AdminPanel.jsx';
 
 function App() {
   return (
+  <AuthProvider>
     <Router basename="/reservas">
       <NavBar />
       <Routes>
@@ -16,6 +17,7 @@ function App() {
         <Route path="adminpanel" element={<AdminPanel />} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 
