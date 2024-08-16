@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ProductPage from './pages/ProductPage.jsx';
 import './App.css';
 import NavBar from './components/Navbar.jsx';
+import { AuthProvider } from './contexts/AuthContext'; // Import the AuthProvider
 import AdminPanel from './pages/AdminPanel.jsx';
 
 function App() {
