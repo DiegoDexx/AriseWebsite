@@ -58,8 +58,9 @@ const AdminPanel = () => {
   };
 
   if (!isLogged) {
-    return <Login />;
+    return <Login onLoginSuccess={() => setIsLogged(true)} />;
   }
+  
 
   return (
     <div className="container">
