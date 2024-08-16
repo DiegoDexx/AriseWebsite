@@ -1258,22 +1258,31 @@ body {
     transform: translateY(-50px);
   }
 }
-.login-modal {
+.modal-overlay {
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 500;
-  width: 100%;
-  max-width: 500px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-inner {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 0.5rem;
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  padding: 1rem;
+  position: relative;
 }
 .modal-inner .modal-top {
-  color: #fff;
+  background-color: #000000;
+  color: white;
   padding: 2rem;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -1288,20 +1297,24 @@ body {
   font-weight: 200;
   margin-bottom: 0;
 }
+.modal-inner .modal-top img {
+  height: 90px;
+  object-fit: cover;
+}
 .modal-inner .modal-content {
   background: #f5f5f5;
   padding: 2rem;
 }
-.modal-inner .login-form {
+.modal-inner .modal-content .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.modal-inner .login-form .form-group {
+.modal-inner .modal-content .login-form .form-group {
   width: 100%;
   margin-bottom: 1rem;
 }
-.modal-inner .login-form .form-group .form-control {
+.modal-inner .modal-content .login-form .form-group .form-control {
   width: calc(100% - 20px);
   padding: 0.75rem;
   border: 1px solid #ccc;
@@ -1309,80 +1322,64 @@ body {
   box-sizing: border-box;
   margin: 0 auto;
 }
-.modal-inner .login-form .btn {
+.modal-inner .modal-content .login-form .form-group input[type=date] {
+  padding: 0.75rem;
+}
+.modal-inner .modal-content .login-form .btn {
   width: 100%;
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: #000000;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 1rem;
 }
-.modal-inner .login-form .btn-primary:hover {
-  background-color: #0056b3;
+.modal-inner .modal-content .login-form .btn-primary:hover {
+  background-color: #000000;
 }
-.modal-inner .login-form .register-link {
+.modal-inner .modal-content .login-form .register-link {
   margin-top: 1rem;
-  color: #007bff;
+  color: #0c0d0e;
   cursor: pointer;
-}
-.modal-inner .modal-bottom {
-  background: #fff;
-  padding: 1.5rem;
-  text-align: center;
-  border: 1px solid transparent;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
 }
 .modal-inner .close-button {
   position: absolute;
-  top: 10px;
+  top: 14px;
   right: 10px;
   background-color: transparent;
   border: none;
   font-size: 20px;
-  color: #000000;
+  color: #ffffff;
   cursor: pointer;
 }
-
-.modal-btn {
-  display: inline-block;
-  border: 1px solid #ddd;
-  padding: 0.75rem 2.25rem;
-  border-radius: 5px;
-  color: #424242;
-  margin: 0.5rem;
+@media (max-width: 768px) {
+  .modal-inner .modal-inner {
+    width: 95%; /* Aumenta el ancho en pantallas pequeñas */
+    padding: 1rem;
+  }
+  .modal-inner .modal-top {
+    padding: 1rem; /* Reduce el padding en pantallas pequeñas */
+  }
+  .modal-inner .modal-content {
+    padding: 1rem; /* Reduce el padding en pantallas pequeñas */
+  }
+  .modal-inner .close-button {
+    font-size: 1.25rem; /* Ajusta el tamaño del botón de cerrar */
+  }
 }
-.modal-btn:hover, .modal-btn:focus {
-  text-decoration: none;
-  color: #2196F3;
-}
-
-.register-link {
-  position: relative;
-  left: 1rem;
-  top: 1px;
-}
-
-.close-register {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #999;
-}
-.close-register:hover, .close-register:focus {
-  color: #999;
-  text-decoration: none;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 400;
+@media (max-width: 480px) {
+  .modal-inner .modal-inner {
+    width: 100%; /* Asegúrate de que el modal ocupe el 100% del ancho en pantallas muy pequeñas */
+    border-radius: 0; /* Quita el radio de borde en pantallas muy pequeñas */
+  }
+  .modal-inner .modal-top {
+    font-size: 0.875rem; /* Ajusta el tamaño del texto */
+    padding: 0.75rem; /* Reduce el padding */
+  }
+  .modal-inner .modal-content {
+    padding: 0.75rem; /* Reduce el padding */
+  }
 }
 
 @keyframes fade-in-animation {
@@ -1436,7 +1433,7 @@ body {
   flex-direction: column;
   align-items: left;
   margin: 0 auto;
-  gap: 30px;
+  gap: 60px;
   width: 80%;
   padding: 20px;
 }

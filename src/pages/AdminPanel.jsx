@@ -1,36 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Login from './Login'; // Asegúrate de importar el componente Login
+import { getItem } from '../functions/localStorage'; // Importa una función para obtener el token almacenado
 
 const AdminPanel = () => {
   const [bookings, setBookings] = useState([]);
   const [products, setProducts] = useState([]);
+  const [isLogged, setIsLogged] = useState(false);
 
-  // useEffect para obtener los datos cuando el componente se monta
   useEffect(() => {
-    const fetchBookings = async () => {
-      try {
-        // Obtiene todas las reservas
-        const bookingsResponse = await axios.get('https://arise-app-44ac74ba4283.herokuapp.com/api/bookings');
-        setBookings(bookingsResponse.data);
-
-        // Crea un conjunto de product_id únicos a partir de las reservas
-        const productIds = Array.from(new Set(bookingsResponse.data.map(booking => booking.product_id)));
-
-        // Realiza múltiples solicitudes para obtener detalles de cada producto
-        const productsResponses = await Promise.all(productIds.map(id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/bookings/${id}`)));
-
-        // Combina los datos de los productos obtenidos
-        const allProducts = productsResponses.map(response => response.data);
-        setProducts(allProducts);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchBookings();
+    // Verifica si hay un token de autenticación en el localStorage
+    const authToken = getItem('authToken');
+    if (authToken) {
+      setIsLogged(true); // Usuario está logueado
+    } else {
+      setIsLogged(false); // Usuario no está logueado
+    }
   }, []);
 
-  // Función para obtener el producto más vendido
+  useEffect(() => {
+    if (isLogged) {
+      const fetchBookings = async () => {
+        try {
+          const bookingsResponse = await axios.get('https://arise-app-44ac74ba4283.herokuapp.com/api/bookings');
+          setBookings(bookingsResponse.data);
+
+          const productIds = Array.from(new Set(bookingsResponse.data.map(booking => booking.product_id)));
+          const productsResponses = await Promise.all(productIds.map(id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/bookings/${id}`)));
+
+          const allProducts = productsResponses.map(response => response.data);
+          setProducts(allProducts);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+
+      fetchBookings();
+    }
+  }, [isLogged]);
+
   const getMostSoldProduct = () => {
     const productCounts = {};
 
@@ -40,16 +48,18 @@ const AdminPanel = () => {
     });
 
     const mostSoldProductId = Object.keys(productCounts).reduce((a, b) => (productCounts[a] > productCounts[b] ? a : b), null);
-
     const mostSoldProduct = products.find((product) => product.id === parseInt(mostSoldProductId));
 
     return mostSoldProduct ? mostSoldProduct.name : 'No data';
   };
 
-  // Función para obtener los detalles del producto dado un ID
   const getProductDetails = (productId) => {
     return products.find((product) => product.id === productId) || {};
   };
+
+  if (!isLogged) {
+    return <Login />;
+  }
 
   return (
     <div className="container">
