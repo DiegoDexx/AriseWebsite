@@ -8,6 +8,7 @@ import axios from 'axios';
 const Login = ({ onLoginSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const { login } = useAuth();
 
     const handleLogin = async () => {
@@ -100,6 +101,8 @@ const Login = ({ onLoginSuccess }) => {
                   onChange={handleEmailChange}
                 />
               </div>
+
+
               <div className="form-group">
                 <label htmlFor="password">Password:</label>
                 <input
@@ -110,6 +113,8 @@ const Login = ({ onLoginSuccess }) => {
                   onChange={handlePasswordChange}
                 />
               </div>
+              {error && <div className="error-message">{error}</div>}
+
               <button type="submit" className="btn">Login</button>
             </form>
           </div>
