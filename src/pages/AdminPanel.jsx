@@ -7,6 +7,11 @@ const AdminPanel = () => {
   const [bookings, setBookings] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLogged, setIsLogged] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+};
 
   useEffect(() => {
     // Verifica si hay un token de autenticación en el localStorage
@@ -57,7 +62,7 @@ const AdminPanel = () => {
     return products.find((product) => product.id === productId) || {};
   };
 
-  if (!isLogged) {
+  if (!isLogged && isModalOpen) {
     return <Login onLoginSuccess={() => setIsLogged(true)} />;
   }
   

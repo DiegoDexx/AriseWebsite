@@ -139,7 +139,7 @@ const BookingModal = ({ setShowBookingModal }) => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="Escribe tu Email"
+                  placeholder="Escribe tu Email (Obligatorio)"
                   required
                 />
                 {errors.email && <div className="error-message">{errors.email}</div>}

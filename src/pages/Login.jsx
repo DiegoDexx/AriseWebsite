@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 import axios from 'axios';
 
-const Login = ({ onLoginSuccess }) => {
+const Login = ({ onLoginSuccess, onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -25,20 +25,16 @@ const Login = ({ onLoginSuccess }) => {
           saveItem('auth_token', authToken);
           onLoginSuccess();
     
-          try {
-            const userInfo = await getUserInfo(authToken);
-            const userId = userInfo.userId;
-            saveItem('userId', userId);
+       
             login(authToken);
             const redirectUrl = response.data.redirect_url;
     
-            console.log('User Info:', userInfo);
-            console.log('Redirect URL:', redirectUrl);
+           console.log('Redirecting to:', redirectUrl);
+           ///login exitoso cerramos el modal y redirigimos a la pagina de admin
+           onClose();
     
             window.location.href = redirectUrl;
-          } catch (error) {
-            console.error('Error obteniendo información del usuario:', error);
-          }
+          
         }
       } catch (error) {
         if (error.response) {
