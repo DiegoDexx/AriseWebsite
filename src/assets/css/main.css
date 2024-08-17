@@ -1704,8 +1704,8 @@ body .overlay {
     align-items: flex-start;
   }
   .product-page .reserve-button {
-    width: 90%;
-    font-weight: 600;
+    width: 60%;
+    font-weight: 500;
   }
 }
 
