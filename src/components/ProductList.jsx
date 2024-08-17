@@ -60,7 +60,7 @@ const ProductList = () => {
               alt={product.color === 'white' ? 'Camiseta Arise Blanca' : 'Camiseta Arise Beige'}
               className="product-image"
             />
-            <h2 className="product-name">{product.color === 'white' ? 'Camiseta Arise Blanca' : 'Camiseta Arise Beige'}</h2>
+            <h2 className="product-name">{product.name}</h2>
             
             <div className='price-container'>
               <p className="original-price">€{product.price}</p>

@@ -13,40 +13,46 @@ const Login = ({ onLoginSuccess }) => {
 
     const handleLogin = async () => {
       try {
-        const response = await axios.post('https://arise-app-44ac74ba4283.herokuapp.com/api/login', { email, password });
-  
+        const response = await axios.post('https://arise-app-44ac74ba4283.herokuapp.com/api/login', 
+          { email, password },
+          { headers: { 'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+           } }
+        );
+    
         if (response.data.token) {
           const authToken = response.data.access_token;
           saveItem('auth_token', authToken);
           onLoginSuccess();
-
+    
           try {
             const userInfo = await getUserInfo(authToken);
             const userId = userInfo.userId;
             saveItem('userId', userId);
-            login(authToken); // Pasa el token al contexto de autenticación
-            onClose();
+            login(authToken);
             const redirectUrl = response.data.redirect_url;
-  
-            COMPROBACIONES:
-            // console.log('Token:', authToken);
-            // console.log('User ID:', userId);
-             console.log('User Info:', userInfo);
-             console.log('Redirect URL:', redirectUrl);
-  
-            // Redirigir según la URL de redirección proporcionada por el backend
-            
+    
+            console.log('User Info:', userInfo);
+            console.log('Redirect URL:', redirectUrl);
+    
             window.location.href = redirectUrl;
           } catch (error) {
             console.error('Error obteniendo información del usuario:', error);
           }
         }
       } catch (error) {
-        if (error.response && error.response.status === 401) {
-          setError('Error, credenciales incorrectas');
+        if (error.response) {
+          if (error.response.status === 401) {
+            setError('Error, credenciales incorrectas');
+          } else if (error.response.status === 503) {
+            setError('El servidor está temporalmente no disponible');
+          } else {
+            setError(`Error: ${error.response.status}`);
+          }
         } else {
-          console.error('Error logging in:', error);
+          setError('Error de red o del servidor');
         }
+        console.error('Error logging in:', error);
       }
     };
 
@@ -85,7 +91,7 @@ const Login = ({ onLoginSuccess }) => {
         `}
       </style>
         <div className="modal-inner">
-          <button className="close-button" onClick={() => console.log('Close modal')}>×</button>
+
           <div className="modal-top">
             <h4>Login</h4>
           </div>

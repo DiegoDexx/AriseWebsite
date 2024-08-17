@@ -6,10 +6,10 @@
   flex-direction: column;
   align-items: flex-start; // Centramos el contenido horizontalmente
   margin: 10px 0;
-  gap: 0px;
-  width: 70%; // Ancho del 70% en móviles
+  gap: 0spx;
+  width: 60%; // Ancho del 70% en móviles
   // border: 1px solid rgba(218, 218, 218, 0.993); // Borde negro con transparencia
-
+  margin-bottom: 20px;
   // Estilos para el contenedor de botones
   .buttons {
     @include flex-container(row, center, center);
@@ -48,15 +48,16 @@
 
   .description-content p {
     margin: 0;
-    width: 85%;
+    width: 100%;
     line-height: 1.5;
   }
 
   .delivery-info {
     display: flex;
     justify-content: space-between;
-    width: 75%;
+    width: 50%;
     margin-top: 1px;
+    margin-bottom: 1rem;
 
     // Apply appearing from the right animation
     @include aparecer-desde-derecha(0.5s);
@@ -80,13 +81,21 @@
 
   // Media query para laptop
   @media (max-width: 800px) {
-    align-items: center;
+    align-items: left;
+    width: 80%;
+    
     .buttons {
-        @include flex-container(row, center, center);
+        @include flex-container(row, left, center);
+        padding: 0;
 
       label {
         color: #020202; // Texto gris cuando no está seleccionado
         border-color: rgba(0, 0, 0, 0.3); // Borde negro con transparencia
+        padding-top: 15px;
+        text-align: left;
+        
+        padding-right: 15px;
+  }
 
         &.active {
           color: #000; // Texto negro cuando está seleccionado
@@ -96,9 +105,10 @@
 
     
     .description-content p {
-      font-size: 16px; // Tamaño de fuente mayor en pantallas grandes
-      text-align: center;
-      margin: 0 auto;
+      font-size: 14px; // Tamaño de fuente mayor en pantallas grandes
+      text-align: left;
+      width:100% ;
+      // margin: 0 auto;
     }
      
       
@@ -115,7 +125,7 @@
     
 
   }
-}
+
 
 /* Ocultar botones de radio por defecto */
 [type="radio"]:checked,
