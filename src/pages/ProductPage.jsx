@@ -119,8 +119,8 @@ const ProductPage = () => {
       <div className="product-details">
         <h1>
           {selectedColor === 'white'
-            ? 'CAMISETA ARISE FRESH WHITE'
-            : 'CAMISETA ARISE BUTTER CREAM BEIGE'}
+            ? 'CAMISETA OVERSIZE FRESH WHITE'
+            : 'CAMISETA OVERSIZE BUTTER  CREAM BEIGE'}
         </h1>
         <div className="price-container">
           <span className="discounted-price">€{totalPrice.toFixed(2)}</span>
