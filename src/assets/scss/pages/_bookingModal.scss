@@ -9,7 +9,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 400;
+  z-index: 1200;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,6 +95,13 @@
         margin-top: 1rem;
         color: #0c0d0e;
         cursor: pointer;
+      }
+
+      small {
+        color: #4e4e4e;
+        margin-top: 1rem;
+        padding: 0.75rem;
+        font-size: 12px;
       }
     }
   }

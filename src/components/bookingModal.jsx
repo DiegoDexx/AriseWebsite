@@ -184,8 +184,13 @@ const BookingModal = ({ setShowBookingModal }) => {
                 value={formData.cantidad} // Cantidad de pedidos
               />
 
+              {/** Aviso de protección de datos en small  */}
+
               {errors.general && <div className="error-message">{errors.general}</div>}
               <button className="btn btn-primary" type="submit">Reservar tu producto</button>
+              <small>
+                Al reservar, aceptas nuestros <strong href="/privacy-policy">Términos y Política de Privacidad</strong>, los datos se usan para la reserva de tu producto y serán eliminados.
+              </small>
             </form>
           )}
         </div>
