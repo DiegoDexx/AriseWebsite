@@ -1722,6 +1722,11 @@ body .overlay {
     flex-direction: row;
     align-items: flex-start;
   }
+  .product-page .product-details .quantity-selector input {
+    /* Ensure proper padding and sizing */
+    padding: 8px;
+    font-size: 14px;
+  }
   .product-page .reserve-button {
     width: 100%;
     font-weight: 500;

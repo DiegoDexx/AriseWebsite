@@ -321,6 +321,11 @@
             align-items: flex-start;
 
           }
+          .quantity-selector input {
+            /* Ensure proper padding and sizing */
+            padding: 8px;
+            font-size: 14px;
+        }
         }
         .reserve-button{
             width: 100%;

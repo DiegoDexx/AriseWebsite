@@ -219,6 +219,7 @@ const ProductPage = () => {
             type="number"
             id="quantity"
             min="1"
+            step="1" // Ensures that only whole numbers are allowed
             value={quantity}
             onChange={handleQuantityChange}
           />
