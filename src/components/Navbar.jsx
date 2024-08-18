@@ -17,9 +17,9 @@ const NavBar = () => {
       </div>
       <div className="menu-container">
         <a href="/reservas" className="active">Home</a>
-        <a href="#news">News</a>
+      
         <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+çç
         <a href="javascript:void(0);" className="icon" onClick={toggleResponsive}>
           <FaBars />
         </a>
