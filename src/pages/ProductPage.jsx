@@ -20,6 +20,7 @@ const ProductPage = () => {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
 
+
   useEffect(() => {
     const productString = getProductSelection();
     if (productString) {
@@ -109,6 +110,7 @@ const ProductPage = () => {
   const discountedPrice = getDiscount(originalPrice, discountPercentage);
   const totalPrice = discountedPrice * quantity;
 
+
   return (
     <div className="product-page">
       {showBookingModal && <BookingModal setShowBookingModal={setShowBookingModal} />}
@@ -119,8 +121,8 @@ const ProductPage = () => {
       <div className="product-details">
         <h1>
           {selectedColor === 'white'
-            ? 'CAMISETA OVERSIZE FRESH WHITE'
-            : 'CAMISETA OVERSIZE BUTTER  CREAM BEIGE'}
+            ? 'OVERSIZE FRESH WHITE'
+            : 'OVERSIZE BUTTER  CREAM BEIGE'}
         </h1>
         <div className="price-container">
           <span className="discounted-price">€{totalPrice.toFixed(2)}</span>
@@ -176,6 +178,8 @@ const ProductPage = () => {
               </button>
             ))}
           </div>
+
+
           <a
             href="#"
             className="size-guide-link"
@@ -208,6 +212,24 @@ const ProductPage = () => {
             </div>
           )}
         </div>
+
+        <div className="quantity-selector">
+          <label htmlFor="quantity">Cantidad:</label>
+          <input
+            type="number"
+            id="quantity"
+            min="1"
+            value={quantity}
+            onChange={handleQuantityChange}
+          />
+           <div className="stock-container">
+          {renderStockState()}
+        </div>
+
+        </div>
+
+       
+
 
            {/*aqui iria el especificar dichos datos de tiempo de envio y entrega */}
            { <SelectInfo description={selectedDescription}></SelectInfo>}

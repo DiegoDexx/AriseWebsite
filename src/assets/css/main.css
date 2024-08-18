@@ -1643,6 +1643,25 @@ body .overlay {
   cursor: pointer;
   font-size: 0.875rem;
 }
+.product-page .quantity-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.product-page .quantity-selector label {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+}
+.product-page .quantity-selector input[type=number] {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
 .product-page .reserve-button {
   padding: 10px 20px;
   background-color: #000000;
