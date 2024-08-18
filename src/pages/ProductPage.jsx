@@ -69,10 +69,17 @@ const ProductPage = () => {
     setSelectedSize(size);
   };
 
-  const handleQuantityChange = (event) => {
-    const newQuantity = parseInt(event.target.value, 10);
-    setQuantity(newQuantity > 0 ? newQuantity : 1);
-  };
+  const handleQuantityChange = (e) => {
+    const newQuantity = e.target.value;
+    
+    if (newQuantity === '') {
+        setQuantity(''); // Allow clearing the input
+    } else {
+        const numberQuantity = Number(newQuantity);
+        if (!isNaN(numberQuantity) && numberQuantity >= 1) {
+            setQuantity(numberQuantity);
+        }
+    }};
 
   const handleReserve = () => {
     let product_id = getItem("id");
