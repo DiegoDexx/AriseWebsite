@@ -151,8 +151,8 @@ const BookingModal = ({ setShowBookingModal }) => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="Ingresa tu número de teléfono"
-                  required
+                  placeholder="Ingresa tu número de teléfono (Opcional)"
+                 
                 />
                 {errors.phone && <div className="error-message">{errors.phone}</div>}
               </fieldset>
