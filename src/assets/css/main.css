@@ -1360,6 +1360,40 @@ body .overlay {
   color: #cc0000;
 }
 
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.loading-screen .loading-spinner {
+  border: 8px solid rgba(255, 255, 255, 0.2);
+  border-left: 8px solid white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+.loading-screen .loading-image {
+  position: absolute;
+  width: 80px;
+  height: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes fade-in-animation {
   from {
     opacity: 0;
