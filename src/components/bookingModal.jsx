@@ -62,7 +62,17 @@ const BookingModal = ({ setShowBookingModal }) => {
         date: formData.date,
         monto_pagado: formData.monto_pagado,
         descuento: formData.descuento,
-      });
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      }
+
+
+    
+    );
 
       console.log("Reserva creada con éxito", response);
       setSuccessBooking(true);
