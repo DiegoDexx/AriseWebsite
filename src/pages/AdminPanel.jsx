@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Login from './Login'; // Asegúrate de importar el componente Login
 import { getItem, getTokenFromStorage } from '../functions/localStorage'; // Importa una función para obtener el token almacenado
+import { DataGrid } from '@mui/x-data-grid'; // Importar DataGrid de Material-UI
 
 const AdminPanel = () => {
   const [bookings, setBookings] = useState([]);
@@ -14,11 +15,10 @@ const AdminPanel = () => {
   };
 
   useEffect(() => {
-    const authToken =getTokenFromStorage('auth_token');
+    const authToken = getTokenFromStorage('auth_token');
     if (authToken) {
       setIsLogged(true); // Usuario está logueado
       // Configura el token de autenticación para todas las solicitudes
-      console.log('authToken', authToken);
       axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
     } else {
       setIsLogged(false); // Usuario no está logueado
@@ -34,10 +34,8 @@ const AdminPanel = () => {
 
           const productIds = Array.from(new Set(bookingsResponse.data.map(booking => booking.product_id)));
           const productsResponses = await Promise.all(productIds.map(
-            id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${id}`
-            ,{ Authorization: `Bearer ${getTokenFromStorage('auth_token')}` } 
-            
-          )));
+            id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${id}`)
+          ));
 
           const allProducts = productsResponses.map(response => response.data);
           setProducts(allProducts);
@@ -72,6 +70,34 @@ const AdminPanel = () => {
     return <Login onLoginSuccess={() => setIsLogged(true)} />;
   }
 
+  // Definimos las columnas para DataGrid
+  const columns = [
+    { field: 'user_email', headerName: 'Email de Usuario', width: 200 },
+    { field: 'user_phone_number', headerName: 'Número de Teléfono', width: 150 },
+    { field: 'user_name', headerName: 'Nombre cliente', width: 150 },
+    { field: 'product_name', headerName: 'Nombre de Producto', width: 200 },
+    { field: 'size', headerName: 'Talla', width: 100 },
+    { field: 'cantidad', headerName: 'Cantidad', width: 100 },
+    { field: 'monto_pagado', headerName: 'Monto pagado', width: 150 },
+    { field: 'date', headerName: 'Fecha de Reserva', width: 150 }
+  ];
+
+  // Formateamos los datos para DataGrid
+  const rows = bookings.map((booking, index) => {
+    const productDetails = getProductDetails(booking.product_id);
+    return {
+      id: index, // Es importante asignar un ID único a cada fila
+      user_email: booking.user_email,
+      user_phone_number: booking.user_phone_number,
+      user_name: booking.user_name,
+      product_name: productDetails.name || 'N/A',
+      size: productDetails.size || 'N/A',
+      cantidad: booking.cantidad || 'N/A',
+      monto_pagado: booking.monto_pagado || 'N/A',
+      date: booking.date
+    };
+  });
+
   return (
     <div className="container">
       <div className="row mt-4">
@@ -80,38 +106,15 @@ const AdminPanel = () => {
             <div className="card-header">
               <h5>Panel de Administración</h5>
             </div>
-            <div className="card-body">
-              <table className="table table-striped table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>Email de Usuario</th>
-                    <th>Número de Teléfono</th>
-                    <th>Nombre cliente</th>
-                    <th>Nombre de Producto</th>
-                    <th>Talla</th>
-                    <th>Cantidad</th>
-                    <th>Monto pagado</th>
-                    <th>Fecha de Reserva</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookings.map((booking, index) => {
-                    const productDetails = getProductDetails(booking.product_id);
-                    return (
-                      <tr key={index}>
-                        <td>{booking.user_email}</td>
-                        <td>{booking.user_phone_number}</td>
-                        <td>{booking.user_name}</td>
-                        <td>{productDetails.name || 'N/A'}</td>
-                        <td>{productDetails.size || 'N/A'}</td>
-                        <td>{booking.cantidad || 'N/A'}</td>
-                        <td>{booking.monto_pagado || 'N/A'}</td>
-                        <td>{booking.date}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+            <div className="card-body" style={{ height: 400, width: '100%' }}>
+              <DataGrid 
+                rows={rows} 
+                columns={columns} 
+                pageSize={10} 
+                rowsPerPageOptions={[10, 20, 50]} 
+                checkboxSelection 
+                disableSelectionOnClick 
+              />
             </div>
           </div>
         </div>
