@@ -11,13 +11,14 @@ const AdminPanel = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-};
+  };
 
   useEffect(() => {
-    // Verifica si hay un token de autenticación en el localStorage
     const authToken = getItem('auth_token');
     if (authToken) {
       setIsLogged(true); // Usuario está logueado
+      // Configura el token de autenticación para todas las solicitudes
+      axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
     } else {
       setIsLogged(false); // Usuario no está logueado
     }
@@ -65,7 +66,6 @@ const AdminPanel = () => {
   if (!isLogged && isModalOpen) {
     return <Login onLoginSuccess={() => setIsLogged(true)} />;
   }
-  
 
   return (
     <div className="container">
