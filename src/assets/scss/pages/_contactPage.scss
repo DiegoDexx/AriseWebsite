@@ -1,0 +1,112 @@
+// Importaciones necesarias
+@import "../abstract/variables";  // Asegúrate de tener tus variables definidas aquí
+@import "../abstract/mixins";
+
+// Estilos generales para la página de contacto
+.contact-page {
+  @include flex-container(column, center, flex-start);
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-color: $background-color; // Variable de color de fondo, asegúrate de definirla en tus variables
+}
+
+// Estilos para los encabezados
+.contact-page h2 {
+  font-size: 1.5rem;
+  color: $primary-color; // Asegúrate de definir $primary-color en tus variables
+  margin-bottom: 20px;
+}
+
+.contact-page h3 {
+  font-size: 1.25rem;
+  color: $secondary-color; // Asegúrate de definir $secondary-color en tus variables
+  cursor: pointer;
+  margin: 10px 0;
+  position: relative;
+  padding-left: 30px;
+}
+
+.contact-page h3::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: $icon-color; // Define el color de los iconos en tus variables
+}
+
+.contact-page h3.open::before {
+  content: '−';
+}
+
+// Estilos para las secciones de FAQ
+.contact-page div {
+  margin-bottom: 20px;
+}
+
+.contact-page p {
+  font-size: 1rem;
+  color: $text-color; // Define el color del texto en tus variables
+  margin: 5px 0;
+}
+
+// Estilos para el formulario de contacto (si lo vuelves a activar)
+.contact-page form {
+  @include flex-container(column, flex-start, flex-start);
+  margin-top: 20px;
+
+  label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: $label-color; // Define el color de las etiquetas en tus variables
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid $border-color; // Define el color del borde en tus variables
+    border-radius: 4px;
+    font-size: 1rem;
+    color: $input-text-color; // Define el color del texto en los campos de entrada
+  }
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: $button-background; // Define el color de fondo del botón
+    color: $button-text; // Define el color del texto del botón
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $button-background-hover; // Define el color de fondo del botón al pasar el ratón
+    }
+  }
+}
+
+// Medidas responsive
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 10px;
+  }
+
+  .contact-page h2 {
+    font-size: 1.25rem;
+  }
+
+  .contact-page h3 {
+    font-size: 1.125rem;
+  }
+
+  .contact-page p {
+    font-size: 0.875rem;
+  }
+}
