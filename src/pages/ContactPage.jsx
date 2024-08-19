@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const ContactPage = () => {
   const [expandedAccordion, setExpandedAccordion] = useState(null);
 
@@ -8,20 +7,19 @@ const ContactPage = () => {
     setExpandedAccordion(expandedAccordion === index ? null : index);
   };
 
-  //   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value
-//     });
-//   };
+  // Copiado al portapapeles
+  const copyToClipboard = (str) => {
+    navigator.clipboard.writeText(str).then(() => {
+      alert('Correo copiado al portapapeles!');
+    }, (err) => {
+      console.error('Error al copiar al portapapeles: ', err);
+    });
+  };
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Aquí puedes manejar el envío del formulario, como enviarlo a una API o mostrar un mensaje de éxito.
-//     console.log(formData);
-//     alert('Formulario enviado correctamente.');
-//   };
+  // Manejo del clic en el enlace
+  const handleCopyClick = () => {
+    copyToClipboard('arisereservas@gmail.com');
+  };
 
   return (
     <div className="container">
@@ -92,7 +90,7 @@ const ContactPage = () => {
             <span className="icon" aria-hidden="true"></span>
           </button>
           <div className="accordion-content">
-            <p>Puedes contactarnos a través del  <a href="arisereservas@gmail.com">correo de contacto.</a></p>
+            <p>Puedes contactarnos a través del <span onClick={handleCopyClick} className="copy-text">correo de contacto.</span></p>
           </div>
         </div>
         <div className="accordion-item">
@@ -109,45 +107,6 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-            {/* Formulario de Contacto 
-      <div>
-        <h3>Formulario de Contacto</h3>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Nombre:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Correo Electrónico:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="message">Mensaje:</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <button type="submit">Enviar</button>
-        </form>
-      </div> */}
     </div>
   );
 };

@@ -2222,4 +2222,26 @@ body .overlay {
   font-size: 1rem;
   font-weight: 300;
   margin: 2em 0;
+}
+.accordion .accordion-content .copy-text {
+  color: #03b5d2;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    padding: 2rem;
+    width: 100%;
+    border: 1px solid black;
+  }
+  .container .accordion .accordion-item button {
+    font-size: 1.25rem;
+  }
+  .container .accordion .accordion-item span {
+    font-size: 18px;
+  }
+  .container h2 {
+    text-align: center;
+    font-size: 24px;
+  }
 }/*# sourceMappingURL=main.css.map */
