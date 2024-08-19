@@ -153,9 +153,7 @@ const BookingModal = ({ setShowBookingModal }) => {
               <p>Has reservado exitosamente <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product?.name || 'Producto'}</strong>.</p>
               <p>El monto total pagado es de <strong>${formData.monto_pagado}</strong>.</p>
               <p>Revisa tu correo <strong>{formData.email}</strong> para verificar tu reserva.</p>
-              <button onClick={() => setShowBookingModal(false)} className="close-button">
-                Cerrar
-              </button>
+          
             </div>
           ) : (
             <form className="login-form" onSubmit={handleSubmit}>
@@ -230,11 +228,11 @@ const BookingModal = ({ setShowBookingModal }) => {
             </form>
           )}
         </div>
-        {!successBooking && (
+       
           <button onClick={() => setShowBookingModal(false)} className="close-button">
             <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/FFFFFF/close-window.png" alt="close-window"/>
           </button>
-        )}
+      
       </div>
     </div>
   );
