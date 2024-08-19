@@ -5,10 +5,10 @@ import { getItem } from '../functions/localStorage';
 
 const BookingModal = ({ setShowBookingModal }) => {
   const [formData, setFormData] = useState({
-    user_name: '', // Asegúrate de que el nombre coincida con el backend
+    user_name: '',
     email: '',
     phone: '',
-    date: new Date().toISOString().split('T')[0], // Fecha actual
+    date: new Date().toISOString().split('T')[0],
     descuento: 20,
     monto_pagado: getItem('monto'),
     cantidad: getItem('quantity'),
@@ -28,7 +28,7 @@ const BookingModal = ({ setShowBookingModal }) => {
 
   useEffect(() => {
     const productString = localStorage.getItem('selectedProduct');
-  
+
     if (productString) {
       try {
         const productData = JSON.parse(productString);
@@ -46,16 +46,16 @@ const BookingModal = ({ setShowBookingModal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({}); // Reset errors
-  
+
     if (!product) {
       setErrors({ general: 'No se ha seleccionado ningún producto.' });
       return;
     }
-  
+
     try {
       const response = await axios.post('https://arise-app-44ac74ba4283.herokuapp.com/api/bookings', {
         product_id: product.productId,
-        user_name: formData.user_name, // Asegúrate de que esto coincide
+        user_name: formData.user_name,
         user_email: formData.email,
         user_phone_number: formData.phone,
         cantidad: formData.cantidad,
@@ -63,10 +63,10 @@ const BookingModal = ({ setShowBookingModal }) => {
         monto_pagado: formData.monto_pagado,
         descuento: formData.descuento,
       });
-  
+
       console.log("Reserva creada con éxito", response);
       setSuccessBooking(true);
-      
+
     } catch (error) {
       if (error.response) {
         console.error('Error creando reserva:', error.response);
@@ -96,10 +96,47 @@ const BookingModal = ({ setShowBookingModal }) => {
           .success-message {
             color: green;
             font-size: 16px;
+            text-align: center;
+          }
+
+          .modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           }
 
           .close-button {
             margin-top: 10px;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+
+          .close-button:hover {
+            background-color: #c82333;
+          }
+
+          .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+
+          .btn-primary:hover {
+            background-color: #0056b3;
           }
         `}
       </style>
@@ -112,10 +149,12 @@ const BookingModal = ({ setShowBookingModal }) => {
         <div className="modal-content">
           {successBooking ? (
             <div className="success-message">
-              <p>¡Enhorabuena! Gracias por reservar.</p>
+              <p>🎉 <strong>¡Felicidades, {formData.user_name}!</strong> 🎉</p>
+              <p>Has reservado exitosamente <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product?.name || 'Producto'}</strong>.</p>
+              <p>El monto total pagado es de <strong>${formData.monto_pagado}</strong>.</p>
               <p>Revisa tu correo <strong>{formData.email}</strong> para verificar tu reserva.</p>
               <button onClick={() => setShowBookingModal(false)} className="close-button">
-                <img width="26" height="26" src="https://img.icons8.com/metro/26/close-window.png" alt="close-window"/>
+                Cerrar
               </button>
             </div>
           ) : (
@@ -124,7 +163,7 @@ const BookingModal = ({ setShowBookingModal }) => {
                 <input
                   type="text"
                   className="form-control"
-                  name="user_name" // Asegúrate de que el nombre coincide
+                  name="user_name"
                   value={formData.user_name}
                   onChange={handleChange}
                   placeholder="Escribe tu nombre y apellidos (Obligatorio)"
@@ -152,7 +191,6 @@ const BookingModal = ({ setShowBookingModal }) => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Ingresa tu número de teléfono (Opcional)"
-                 
                 />
                 {errors.phone && <div className="error-message">{errors.phone}</div>}
               </fieldset>
@@ -171,25 +209,23 @@ const BookingModal = ({ setShowBookingModal }) => {
               <input
                 type="hidden"
                 name="descuento"
-                value={formData.descuento} // 20% de descuento
+                value={formData.descuento}
               />
               <input
                 type="hidden"
                 name="monto_pagado"
-                value={formData.monto_pagado} // Monto pagado
+                value={formData.monto_pagado}
               />
               <input
                 type="hidden"
                 name="cantidad"
-                value={formData.cantidad} // Cantidad de pedidos
+                value={formData.cantidad}
               />
-
-              {/** Aviso de protección de datos en small  */}
 
               {errors.general && <div className="error-message">{errors.general}</div>}
               <button className="btn btn-primary" type="submit">Reservar tu producto</button>
               <small>
-                Al reservar, aceptas nuestros <strong href="/privacy-policy">Términos y Política de Privacidad</strong>, los datos se usan para la reserva de tu producto y serán eliminados.
+              La información recopilada no se compartirá con terceros y se <strong>eliminará después de las reservas</strong>
               </small>
             </form>
           )}
