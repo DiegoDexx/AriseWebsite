@@ -49,6 +49,10 @@ export const saveItem = (key, value) => {
       return null;
     }
   };
+
+  export const getTokenFromStorage = ($token) => {
+    return localStorage.getItem($token);
+    }
   
   // Example usage:
   // saveProductSelection('123', 'white');

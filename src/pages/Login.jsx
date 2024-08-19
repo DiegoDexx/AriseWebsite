@@ -23,6 +23,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
         if (response.data.access_token) {
           const authToken = response.data.access_token;
           saveItem('auth_token', authToken);
+          console.log("token guardado: ",authToken);
           onLoginSuccess();
     
        

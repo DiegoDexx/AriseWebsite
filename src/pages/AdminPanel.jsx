@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Login from './Login'; // Asegúrate de importar el componente Login
-import { getItem } from '../functions/localStorage'; // Importa una función para obtener el token almacenado
+import { getItem, getTokenFromStorage } from '../functions/localStorage'; // Importa una función para obtener el token almacenado
 
 const AdminPanel = () => {
   const [bookings, setBookings] = useState([]);
@@ -14,10 +14,11 @@ const AdminPanel = () => {
   };
 
   useEffect(() => {
-    const authToken = getItem('auth_token');
+    const authToken =getTokenFromStorage('auth_token');
     if (authToken) {
       setIsLogged(true); // Usuario está logueado
       // Configura el token de autenticación para todas las solicitudes
+      console.log('authToken', authToken);
       axios.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
     } else {
       setIsLogged(false); // Usuario no está logueado
@@ -32,7 +33,11 @@ const AdminPanel = () => {
           setBookings(bookingsResponse.data);
 
           const productIds = Array.from(new Set(bookingsResponse.data.map(booking => booking.product_id)));
-          const productsResponses = await Promise.all(productIds.map(id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/bookings/${id}`)));
+          const productsResponses = await Promise.all(productIds.map(
+            id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/bookings/${id}`
+            ,{ Authorization: `Bearer ${getTokenFromStorage('auth_token')}` } 
+            
+          )));
 
           const allProducts = productsResponses.map(response => response.data);
           setProducts(allProducts);
