@@ -2166,7 +2166,7 @@ body .overlay {
   box-sizing: border-box;
 }
 
-.container {
+.contact-container {
   margin: 0 auto;
   padding: 4rem;
   width: 48rem;
@@ -2263,18 +2263,18 @@ body .overlay {
 }
 
 @media screen and (max-width: 800px) {
-  .container {
+  .contact-container {
     padding: 2rem;
     width: 100%;
     border: 1px solid black;
   }
-  .container .accordion .accordion-item button {
+  .contact-container .accordion .accordion-item button {
     font-size: 1.25rem;
   }
-  .container .accordion .accordion-item span {
+  .contact-container .accordion .accordion-item span {
     font-size: 18px;
   }
-  .container h2 {
+  .contact-container h2 {
     text-align: center;
     font-size: 24px;
   }

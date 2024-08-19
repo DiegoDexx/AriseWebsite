@@ -22,7 +22,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="contact-container">
       <h2>Nuestras preguntas más frecuentes</h2>
       <div className="accordion">
         {/* Sección de FAQ sobre Devoluciones */}

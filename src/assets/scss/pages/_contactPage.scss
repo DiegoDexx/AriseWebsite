@@ -14,7 +14,7 @@ $blue: #03b5d2;
 }
 
 
-.container {
+.contact-container {
   margin: 0 auto;
   padding: 4rem;
   width: 48rem;
@@ -130,7 +130,7 @@ $blue: #03b5d2;
   //responsive
     @media screen and (max-width: 800px) {
 
-        .container {
+        .contact-container {
             padding: 2rem;
             width: 100%;
             border: 1px solid black;
