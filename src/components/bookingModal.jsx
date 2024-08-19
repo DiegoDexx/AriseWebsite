@@ -127,7 +127,7 @@ const BookingModal = ({ setShowBookingModal }) => {
                   name="user_name" // Asegúrate de que el nombre coincide
                   value={formData.user_name}
                   onChange={handleChange}
-                  placeholder="Escribe tu nombre"
+                  placeholder="Escribe tu nombre y apellidos (Obligatorio)"
                   required
                 />
                 {errors.user_name && <div className="error-message">{errors.user_name}</div>}
