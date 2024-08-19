@@ -34,7 +34,7 @@ const AdminPanel = () => {
 
           const productIds = Array.from(new Set(bookingsResponse.data.map(booking => booking.product_id)));
           const productsResponses = await Promise.all(productIds.map(
-            id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/bookings/${id}`
+            id => axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${id}`
             ,{ Authorization: `Bearer ${getTokenFromStorage('auth_token')}` } 
             
           )));
