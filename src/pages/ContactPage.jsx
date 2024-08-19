@@ -1,24 +1,14 @@
 import React, { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
+
 
 const ContactPage = () => {
-  const [showReturnFAQ, setShowReturnFAQ] = useState(false);
-  const [showGeneralFAQ, setShowGeneralFAQ] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [expandedAccordion, setExpandedAccordion] = useState(null);
 
-  const toggleReturnFAQ = () => {
-    setShowReturnFAQ(!showReturnFAQ);
+  const toggleAccordion = (index) => {
+    setExpandedAccordion(expandedAccordion === index ? null : index);
   };
 
-  const toggleGeneralFAQ = () => {
-    setShowGeneralFAQ(!showGeneralFAQ);
-  };
-
-//   const handleInputChange = (e) => {
+  //   const handleInputChange = (e) => {
 //     const { name, value } = e.target;
 //     setFormData({
 //       ...formData,
@@ -34,44 +24,92 @@ const ContactPage = () => {
 //   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2><FaBars /> FAQ</h2>
-
-      {/* Sección de FAQ sobre Devoluciones */}
-      <div>
-        <h3 onClick={toggleReturnFAQ} style={{ cursor: 'pointer' }}>
-          {showReturnFAQ ? '−' : '+'} Información sobre Devoluciones
-        </h3>
-        {showReturnFAQ && (
-          <div>
-            <p><strong>¿Cuál es el plazo para devolver un producto?</strong></p>
-            <p>Tienes 30 días para devolver un producto desde la fecha de compra.</p>
-            <p><strong>¿Cómo realizo una devolución?</strong></p>
-            <p>Puedes realizar la devolución contactando a través del correo electrónico y solicitando una cancelación.</p>
-            <p><strong>¿Cuánto tiempo tarda en procesarse la devolución?</strong></p>
-            <p>El proceso de devolución puede tardar entre 5 y 7 días hábiles después de que recibamos el producto.</p>
+    <div className="container">
+      <h2>Nuestras preguntas más frecuentes</h2>
+      <div className="accordion">
+        {/* Sección de FAQ sobre Devoluciones */}
+        <div className="accordion-item">
+          <button
+            id="accordion-button-1"
+            aria-expanded={expandedAccordion === 1}
+            onClick={() => toggleAccordion(1)}
+          >
+            <span className="accordion-title">¿Cuál es el plazo para devolver un producto?</span>
+            <span className="icon" aria-hidden="true"></span>
+          </button>
+          <div className="accordion-content">
+            <p>Tienes 10 días para devolver un producto desde la fecha de tu reserva.</p>
           </div>
-        )}
-      </div>
+        </div>
+        <div className="accordion-item">
+          <button
+            id="accordion-button-2"
+            aria-expanded={expandedAccordion === 2}
+            onClick={() => toggleAccordion(2)}
+          >
+            <span className="accordion-title">¿Cómo realizo una cancelación de reservas?</span>
+            <span className="icon" aria-hidden="true"></span>
+          </button>
+          <div className="accordion-content">
+            <p>Puedes realizar la devolución contactando a través del correo electrónico y solicitando una cancelación.</p>
+          </div>
+        </div>
+        <div className="accordion-item">
+          <button
+            id="accordion-button-3"
+            aria-expanded={expandedAccordion === 3}
+            onClick={() => toggleAccordion(3)}
+          >
+            <span className="accordion-title">¿Cuánto tiempo tarda en procesarse la devolución?</span>
+            <span className="icon" aria-hidden="true"></span>
+          </button>
+          <div className="accordion-content">
+            <p>El proceso de devolución puede tardar varios días hábiles después de que cancelemos la reserva del producto.</p>
+          </div>
+        </div>
 
-      {/* Sección de FAQ General */}
-      <div>
-        <h3 onClick={toggleGeneralFAQ} style={{ cursor: 'pointer' }}>
-          {showGeneralFAQ ? '−' : '+'} Preguntas Frecuentes
-        </h3>
-        {showGeneralFAQ && (
-          <div>
-            <p><strong>¿Dónde puedo encontrar mi número de producto pedido?</strong></p>
-            <p>Tu número de pedido se encuentra en el correo de confirmación que recibiste después de realizar la compra.</p>
-            <p><strong>¿Cómo puedo contactar con atención al cliente?</strong></p>
-            <p>Puedes contactarnos a través del correo de contacto.</p>
-            <p><strong>¿Ofrecen envíos internacionales?</strong></p>
+        {/* Sección de FAQ General */}
+        <div className="accordion-item">
+          <button
+            id="accordion-button-4"
+            aria-expanded={expandedAccordion === 4}
+            onClick={() => toggleAccordion(4)}
+          >
+            <span className="accordion-title">¿Dónde puedo encontrar mi número de producto pedido?</span>
+            <span className="icon" aria-hidden="true"></span>
+          </button>
+          <div className="accordion-content">
+            <p>Tu número de pedido(id de reserva) se encuentra en el correo de confirmación que recibiste después de realizar la compra.</p>
+          </div>
+        </div>
+        <div className="accordion-item">
+          <button
+            id="accordion-button-5"
+            aria-expanded={expandedAccordion === 5}
+            onClick={() => toggleAccordion(5)}
+          >
+            <span className="accordion-title">¿Cómo puedo contactar con atención al cliente?</span>
+            <span className="icon" aria-hidden="true"></span>
+          </button>
+          <div className="accordion-content">
+            <p>Puedes contactarnos a través del  <a href="arisereservas@gmail.com">correo de contacto.</a></p>
+          </div>
+        </div>
+        <div className="accordion-item">
+          <button
+            id="accordion-button-6"
+            aria-expanded={expandedAccordion === 6}
+            onClick={() => toggleAccordion(6)}
+          >
+            <span className="accordion-title">¿Ofrecen envíos internacionales?</span>
+            <span className="icon" aria-hidden="true"></span>
+          </button>
+          <div className="accordion-content">
             <p>No, por el momento no ofrecemos envíos internacionales. Las tarifas de envío y los tiempos de entrega varían según el destino <strong> solo dentro de España</strong>.</p>
           </div>
-        )}
+        </div>
       </div>
-{/* 
-      {/* Formulario de Contacto 
+            {/* Formulario de Contacto 
       <div>
         <h3>Formulario de Contacto</h3>
         <form onSubmit={handleSubmit}>
