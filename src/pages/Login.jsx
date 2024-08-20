@@ -23,7 +23,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
         if (response.data.access_token) {
           const authToken = response.data.access_token;
           saveItem('auth_token', authToken);
-          console.log("token guardado: ",authToken);
+          // console.log("token guardado: ",authToken);
           onLoginSuccess();
     
        
@@ -31,7 +31,7 @@ const Login = ({ onLoginSuccess, onClose }) => {
             const redirectUrl = response.data.redirect_url;
     
            console.log('Redirecting to:', redirectUrl);
-           console.log('Login successful');
+          //  console.log('Login successful');
            ///login exitoso cerramos el modal y redirigimos a la pagina de admin
            onClose();
     

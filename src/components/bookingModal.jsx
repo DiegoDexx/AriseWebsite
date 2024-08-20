@@ -34,7 +34,7 @@ const BookingModal = ({ setShowBookingModal }) => {
       try {
         const productData = JSON.parse(productString);
         setProduct(productData);
-        console.log('Producto recuperado de localStorage:', productData);
+        // console.log('Producto recuperado de localStorage:', productData);
       } catch (error) {
         console.error('Error parsing JSON from localStorage:', error);
         setErrors({ general: 'Error al cargar los datos del producto. Por favor, intenta nuevamente.' });
@@ -75,7 +75,7 @@ const BookingModal = ({ setShowBookingModal }) => {
     
     );
 
-      console.log("Reserva creada con éxito", response);
+      // console.log("Reserva creada con éxito", response);
       setSuccessBooking(true);
 
     } catch (error) {

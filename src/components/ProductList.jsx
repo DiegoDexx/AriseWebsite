@@ -19,7 +19,7 @@ const ProductList = () => {
         const uniqueProducts = [];
         const seenColors = new Set();
 
-        console.log(response);
+        // console.log(response);
 
         // Guarda todos los productos en productData
         setProductData(response.data);
