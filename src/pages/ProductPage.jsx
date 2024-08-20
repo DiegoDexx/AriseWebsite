@@ -14,6 +14,7 @@ const ProductPage = () => {
   const [selectedProduct, setSelectedProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState('');
+  const [selectedName, setSelectedName] = useState('');
   const [selectedSize, setSelectedSize] = useState('XS');
   const [selectedDescription, setSelectedDescription] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
@@ -28,6 +29,7 @@ const ProductPage = () => {
       const product = JSON.parse(productString);
       if (product && product.productId) {
         setSelectedProductId(product.productId.productId);
+        setSelectedName(product.productId.name);
         setSelectedColor(product.productId.color);
         setSelectedDescription(product.productId.description || '');
         setSelectedPrice(product.productId.price || '');
@@ -46,6 +48,7 @@ const ProductPage = () => {
             const productData = response.data[0];
             setSelectedProduct(productData);
             setSelectedProductId(productData.productId);
+            setSelectedName(productData.name);
             setSelectedPrice(productData.price);
             setSelectedDescription(productData.description);
             setStockState(productData.stock_state);
@@ -74,6 +77,7 @@ const ProductPage = () => {
     let product_id = getItem("id");
     const productData = {
       productId: product_id,
+      name: selectedName,
       color: selectedColor,
       size: selectedSize,
       quantity: quantity

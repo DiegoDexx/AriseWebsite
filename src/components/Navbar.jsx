@@ -19,7 +19,7 @@ const NavBar = () => {
         <a href="/reservas" className="active">Home</a>
       
         <a href="/reservas/contact">Contact & FAQ</a>
-çç
+
         <a href="javascript:void(0);" className="icon" onClick={toggleResponsive}>
           <FaBars />
         </a>
