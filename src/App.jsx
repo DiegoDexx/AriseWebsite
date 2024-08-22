@@ -31,10 +31,10 @@ function App() {
             <NavBar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="products/:id" element={<ProductPage />} />
+              <Route path="products/:productId" element={<ProductPage />} />
               <Route path="adminpanel" element={<AdminPanel />} />
               <Route path="contact" element={<ContactPage />} />
-              <Route path="*" element={<h1>Not Found</h1>} />
+              <Route path="*" element={<h3>Not Found</h3>} />
             </Routes>
           </>
         )}
