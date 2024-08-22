@@ -96,6 +96,7 @@ const ProductPage = () => {
   const discountPercentage = 20;
   const discountedPrice = getDiscount(originalPrice, discountPercentage);
   const totalPrice = discountedPrice * quantity;
+  const originalTotalPrice = originalPrice * quantity;
 
   return (
     <div className="product-page">
@@ -111,7 +112,7 @@ const ProductPage = () => {
         </h1>
         <div className="price-container">
           <span className="discounted-price">€{totalPrice.toFixed(2)}</span>
-          <span className="original-price">€{originalPrice}</span>
+          <span className="original-price">€{originalTotalPrice.toFixed(2)}</span>
         </div>
         
         <div className="color-choose">
