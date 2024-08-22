@@ -49,7 +49,7 @@ const SelectInfo = ({ description }) => {
           <div className="delivery-info">
             <div className="info-item">
               <i className="fa fa-truck" aria-hidden="true"></i>
-              <span>Entrega en 24h</span>
+              <span>Entrega en 24h-48h</span>
             </div>
             <div className="info-item">
               <i className="fa fa-money" aria-hidden="true"></i>

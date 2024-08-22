@@ -11,31 +11,20 @@ const Countdown = () => {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
+
       };
     }
 
     return timeLeft;
   };
 
-  // Format numbers to ensure two digits
   const formatNumber = (number) => {
     return number < 10 ? `0${number}` : number;
   };
 
-  // Get the target date from localStorage or set it to 10 days from now
-  const getTargetDate = () => {
-    const savedDate = localStorage.getItem('targetDate');
-    if (savedDate) {
-      return new Date(savedDate);
-    } else {
-      const newTargetDate = new Date();
-      newTargetDate.setDate(newTargetDate.getDate() + 10);
-      localStorage.setItem('targetDate', newTargetDate.toString());
-      return newTargetDate;
-    }
-  };
+  // Set the target date to September 2, 2024
+  const targetDate = new Date('2024-09-02T08:00:00Z'); // 10:00 AM CET is 08:00 AM UTC
 
-  const [targetDate, setTargetDate] = useState(getTargetDate());
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
 
   useEffect(() => {
@@ -45,14 +34,6 @@ const Countdown = () => {
 
     return () => clearInterval(timer);
   }, [targetDate]);
-
-  const resetCountdown = () => {
-    const newTargetDate = new Date();
-    newTargetDate.setDate(newTargetDate.getDate() + 10);
-    setTargetDate(newTargetDate);
-    localStorage.setItem('targetDate', newTargetDate.toString());
-    setTimeLeft(calculateTimeLeft(newTargetDate));
-  };
 
   return (
     <div className="countdown-container">
@@ -67,7 +48,6 @@ const Countdown = () => {
           </div>
         ))}
       </div>
-      {/* <!-- <button onClick={resetCountdown} className="reset-button">Reiniciar Contador</button> */}
     </div>
   );
 };
