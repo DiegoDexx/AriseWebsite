@@ -163,7 +163,7 @@ const BookingModal = ({ setShowBookingModal }) => {
               <p>🎉 <strong>¡Felicidades, {formData.user_name}!</strong> 🎉</p>
               <p>Has reservado exitosamente <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong>.</p>
               <p>El monto total a pagar es de <strong>€{formData.monto_pagado}</strong>.</p>
-              <p>Revisa tu correo <strong>{formData.email}</strong> para verificar tu reserva.</p>
+              {/* <p>Revisa tu correo <strong>{formData.email}</strong> para verificar tu reserva.</p> */}
           
             </div>
           ) : (
