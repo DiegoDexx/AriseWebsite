@@ -92,7 +92,7 @@ const BookingModal = ({ setShowBookingModal }) => {
   return (
     <div className="modal-overlay">
       <style>
-        {`
+        {        `
           .error-message {
             color: red;
             margin-top: 5px;
@@ -105,9 +105,10 @@ const BookingModal = ({ setShowBookingModal }) => {
           }
 
           .success-message {
-            color: green;
-            font-size: 16px;
+            color: black;
+            font-size: 18px;
             text-align: center;
+            font-weight: bold;
           }
 
           .modal-content {
@@ -119,6 +120,8 @@ const BookingModal = ({ setShowBookingModal }) => {
             background-color: #f8f9fa;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            margin: 0 auto;
           }
 
           .close-button {
@@ -149,6 +152,22 @@ const BookingModal = ({ setShowBookingModal }) => {
           .btn-primary:hover {
             background-color: #0056b3;
           }
+
+          @media (max-width: 600px) {
+            .success-message {
+              font-size: 16px;
+            }
+
+            .modal-content {
+              padding: 5px;
+            }
+          }
+
+          @media (max-width: 800px) {
+            .success-message {
+              font-size: 14px;
+            }
+          }
         `}
       </style>
       <div className="modal-inner">
@@ -162,7 +181,7 @@ const BookingModal = ({ setShowBookingModal }) => {
             <div className="success-message">
               <p>🎉 <strong>¡Felicidades, {formData.user_name}!</strong> 🎉</p>
               <p>Su reserva de  <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong> está en tramite.</p>
-              <p>El importe es de <strong>€{formData.monto_pagado}</strong>.</p>
+              <p>El importe total es de <strong>€{formData.monto_pagado}</strong>.</p>
                <p>Nos pondremos pronto en contacto con usted a través del correo <strong>arisereservas@gmail.com</strong> para finalizar la operación.</p>
           
             </div>
