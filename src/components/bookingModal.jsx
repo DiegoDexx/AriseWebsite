@@ -161,9 +161,9 @@ const BookingModal = ({ setShowBookingModal }) => {
           {successBooking ? (
             <div className="success-message">
               <p>🎉 <strong>¡Felicidades, {formData.user_name}!</strong> 🎉</p>
-              <p>Has reservado exitosamente <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong>.</p>
-              <p>El monto total a pagar es de <strong>€{formData.monto_pagado}</strong>.</p>
-               <p>Nos pondremos en contacto con usted a través del correo <strong>arisereservas@gmail.com</strong> </p>
+              <p>Su reserva de  <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong> está en tramite.</p>
+              <p>El importe es de <strong>€{formData.monto_pagado}</strong>.</p>
+               <p>Nos pondremos pronto en contacto con usted a través del correo <strong>arisereservas@gmail.com</strong> para finalizar la operación</p>
           
             </div>
           ) : (
