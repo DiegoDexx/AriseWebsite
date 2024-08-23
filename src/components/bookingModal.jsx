@@ -14,6 +14,8 @@ const BookingModal = ({ setShowBookingModal }) => {
     cantidad: getItem('quantity'),
   });
 
+
+
   const [errors, setErrors] = useState({});
   const [product, setProduct] = useState(null);
   const [successBooking, setSuccessBooking] = useState(false);
@@ -25,6 +27,12 @@ const BookingModal = ({ setShowBookingModal }) => {
       [name]: value,
     }));
   };
+
+  const handleCloseModal = () => {
+    setShowBookingModal(false);
+
+  };
+  
 
   useEffect(() => {
     const productString = localStorage.getItem('selectedProduct');
@@ -259,7 +267,7 @@ const BookingModal = ({ setShowBookingModal }) => {
           )}
         </div>
        
-          <button onClick={() => setShowBookingModal(false)} className="close-button">
+        <button onClick={handleCloseModal} className="close-button">
             <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/FFFFFF/close-window.png" alt="close-window"/>
           </button>
       

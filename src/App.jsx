@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage.jsx';
 import NavBar from './components/Navbar.jsx';
@@ -23,14 +23,15 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router basename="/reservas">
+      <Router>
         {loading ? (
           <LoadingPage />
         ) : (
           <>
             <NavBar />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Navigate to="/reservas" />} />
+              <Route path="/reservas" element={<Home />} />
               <Route path="products/:productId" element={<ProductPage />} />
               <Route path="adminpanel" element={<AdminPanel />} />
               <Route path="contact" element={<ContactPage />} />

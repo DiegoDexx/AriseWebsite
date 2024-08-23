@@ -22,6 +22,7 @@ const ProductPage = () => {
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
 
+
   // Fetch product details logic omitted for brevity
   useEffect(() => {
     const productString = getProductSelection();
@@ -89,7 +90,11 @@ const ProductPage = () => {
     localStorage.setItem('selectedProduct', JSON.stringify(productData));
     saveItem("monto", totalPrice.toFixed(2));
     saveItem("quantity", quantity);
-    setShowBookingModal(true);
+
+   
+    setShowBookingModal(true);  
+
+    
   };
 
   const originalPrice = selectedPrice;
@@ -97,6 +102,7 @@ const ProductPage = () => {
   const discountedPrice = getDiscount(originalPrice, discountPercentage);
   const totalPrice = discountedPrice * quantity;
   const originalTotalPrice = originalPrice * quantity;
+
 
   return (
     <div className="product-page">
