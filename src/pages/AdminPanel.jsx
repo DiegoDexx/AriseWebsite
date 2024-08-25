@@ -205,7 +205,7 @@ const AdminPanel = () => {
                   {allProducts.map(({ id, name, size, color, stock_state }) => (
                         <tr key={id}>
                           <td>{name}</td>
-                          {!isMobile && <td>{size}</td>}
+                          <td>{size}</td>
                           <td>{stock_state}</td>
                           <td>
                             {stock_state === 'agotado' ? (
