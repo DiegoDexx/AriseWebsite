@@ -139,6 +139,8 @@ const AdminPanel = () => {
     return mostSoldProduct ? mostSoldProduct.name : 'No data';
   };
 
+  const isMobile = window.innerWidth < 800;
+
   return (
     <div className="container">
       <div className="row mt-4">
@@ -182,14 +184,14 @@ const AdminPanel = () => {
           </div>
         </div>
       </div>
-
+  
       <div className="row mt-4">
         <div className="col">
           <div className="card">
             <div className="card-header">
               <h5>Gestión de Productos</h5>
             </div>
-            <div className="card-body">
+            <div className="card-body table-responsive">
               <table className="table">
                 <thead>
                   <tr>
@@ -201,29 +203,22 @@ const AdminPanel = () => {
                 </thead>
                 <tbody>
                   {allProducts.map(({ id, name, size, color, stock_state }) => (
-                    <tr key={id}>
-                      <td>{name}</td>
-                      <td>{size}</td>
-             
-                      <td>{stock_state}</td>
-                      <td>
-                        {stock_state === 'agotado' ? (
-                          <button
-                            className="btn btn-success"
-                            onClick={() => handleMarkAsAvailable(id)}
-                          >
-                             Marcar disponible
-                          </button>
-                        ) : (
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => handleMarkAsOutOfStock(id)}
-                          >
-                            Agotar
-                          </button>
-                        )}
-                      </td>
-                    </tr>
+                        <tr key={id}>
+                          <td>{name}</td>
+                          {!isMobile && <td>{size}</td>}
+                          <td>{stock_state}</td>
+                          <td>
+                            {stock_state === 'agotado' ? (
+                              <button className="btn btn-success" onClick={() => handleMarkAsAvailable(id)}>
+                                Marcar disponible
+                              </button>
+                            ) : (
+                              <button className="btn btn-danger" onClick={() => handleMarkAsOutOfStock(id)}>
+                                Agotar
+                              </button>
+                            )}
+                          </td>
+                        </tr>
                   ))}
                 </tbody>
               </table>
