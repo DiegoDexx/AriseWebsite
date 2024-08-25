@@ -128,7 +128,7 @@ const BookingModal = ({ setShowBookingModal }) => {
             background-color: #f8f9fa;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 90%;
+            max-width: 95%;
             margin: 0 auto;
           }
 
