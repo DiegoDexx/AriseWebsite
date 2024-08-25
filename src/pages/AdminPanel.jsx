@@ -139,7 +139,6 @@ const AdminPanel = () => {
     return mostSoldProduct ? mostSoldProduct.name : 'No data';
   };
 
-  const isMobile = window.innerWidth < 800;
 
   return (
     <div className="container">
