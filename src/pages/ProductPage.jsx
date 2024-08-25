@@ -96,6 +96,9 @@ const ProductPage = () => {
 
     
   };
+  const handleOutOfStock = () => {
+    alert('Producto agotado');
+  }
 
   const originalPrice = selectedPrice;
   const discountPercentage = 20;
@@ -213,9 +216,14 @@ const ProductPage = () => {
         
         <SelectInfo description={selectedDescription} />
 
+        {stockState === 'disponible' && (
         <button className="reserve-button" onClick={handleReserve}>
           Reservar
+        </button> )} { stockState === 'agotado' && (
+        <button className="reserve-button" onClick={handleOutOfStock}>
+          Agotado
         </button>
+        )}
       </div>
     </div>
   );

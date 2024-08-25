@@ -54,58 +54,71 @@ const AdminPanel = () => {
     }
   }, [isLogged]);
 
-  const getMostSoldProduct = () => {
-    const productCounts = {};
-
-    bookings.forEach((booking) => {
-      const { product_id } = booking;
-      productCounts[product_id] = (productCounts[product_id] || 0) + 1;
-    });
-
-    const mostSoldProductId = Object.keys(productCounts).reduce((a, b) => (productCounts[a] > productCounts[b] ? a : b), null);
-    const mostSoldProduct = allProducts.find((product) => product.id === parseInt(mostSoldProductId));
-
-    return mostSoldProduct ? mostSoldProduct.name : 'No data';
-  };
-
   const handleMarkAsOutOfStock = async (productId) => {
     try {
-      // Asegúrate de que el productId sea válido y esté en el formato correcto
       if (!productId) {
         console.error('Product ID is invalid');
         return;
       }
   
+      // Primero obtén los datos actuales del producto
+      const productResponse = await axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${productId}`);
+      const productData = productResponse.data;
+  
+      // Luego, envía todos los campos requeridos, incluyendo el stock_state actualizado
       const response = await axios.put(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${productId}`, {
+        ...productData,
         stock_state: 'agotado'
       });
   
-      // Verifica si la respuesta indica éxito
       if (response.status === 200) {
-        // Actualiza la lista de productos después de cambiar el estado
         const updatedProducts = allProducts.map(product => 
           product.id === productId ? { ...product, stock_state: 'agotado' } : product
         );
         setAllProducts(updatedProducts);
+        alert('Producto actualizado!');
+
+        console.log('Producto marcado como agotado:', response.data);
       } else {
-        console.error('Error updating stock state:', response.data);
+        console.error('Error actualizando el estado de stock:', response.data);
       }
     } catch (error) {
-      // Maneja el error y muestra información útil
-      console.error('Error updating stock state:', error.response ? error.response.data : error.message);
+      console.error('Error actualizando el estado de stock:', error.response ? error.response.data : error.message);
     }
   };
-  
 
-  // Organiza los productos por nombre y lista todas las tallas y colores
-  const productDetails = allProducts.reduce((acc, product) => {
-    const { id, name, size, color } = product;
-    if (!acc[name]) {
-      acc[name] = [];
+  const handleMarkAsAvailable = async (productId) => {
+    try {
+      if (!productId) {
+        console.error('Product ID is invalid');
+        return;
+      }
+  
+      // Primero obtén los datos actuales del producto
+      const productResponse = await axios.get(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${productId}`);
+      const productData = productResponse.data;
+  
+      // Luego, envía todos los campos requeridos, incluyendo el stock_state actualizado
+      const response = await axios.put(`https://arise-app-44ac74ba4283.herokuapp.com/api/products/${productId}`, {
+        ...productData,
+        stock_state: 'disponible'
+      });
+  
+      if (response.status === 200) {
+        const updatedProducts = allProducts.map(product => 
+          product.id === productId ? { ...product, stock_state: 'disponible' } : product
+        );
+        setAllProducts(updatedProducts);
+        alert('Producto actualizado!');
+
+        console.log('Producto marcado como disponible:', response.data);
+      } else {
+        console.error('Error actualizando el estado de stock:', response.data);
+      }
+    } catch (error) {
+      console.error('Error actualizando el estado de stock:', error.response ? error.response.data : error.message);
     }
-    acc[name].push({ size, color, id });
-    return acc;
-  }, {});
+  };
 
   if (!isLogged && isModalOpen) {
     return <Login onLoginSuccess={() => setIsLogged(true)} />;
@@ -120,7 +133,7 @@ const AdminPanel = () => {
               <h5>Panel de Administración</h5>
             </div>
             <div className="card-body" style={{ height: 400, width: '100%' }}>
-              <DataGrid 
+              <DataGrid
                 rows={bookings.map((booking, index) => {
                   const productDetails = allProducts.find((product) => product.id === booking.product_id) || {};
                   return {
@@ -156,42 +169,53 @@ const AdminPanel = () => {
       </div>
 
       <div className="row mt-4">
-        {Object.keys(productDetails).map(productName => (
-          <div className="col" key={productName}>
-            <div className="card">
-              <div className="card-header">
-                <h5>{productName}</h5>
-              </div>
-              <div className="card-body">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Talla</th>
-                      <th>Color</th>
-                      <th>Acción</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {productDetails[productName].map(({ size, color, id }, index) => (
-                      <tr key={index}>
-                        <td>{size}</td>
-                        <td>{color}</td>
-                        <td>
-                          <button 
-                            className="btn btn-danger" 
+        <div className="col">
+          <div className="card">
+            <div className="card-header">
+              <h5>Gestión de Productos</h5>
+            </div>
+            <div className="card-body">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Nombre de Producto</th>
+                    <th>Talla</th>
+                    <th>Color</th>
+                    <th>Estado de Stock</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {allProducts.map(({ id, name, size, color, stock_state }) => (
+                    <tr key={id}>
+                      <td>{name}</td>
+                      <td>{size}</td>
+                      <td>{color}</td>
+                      <td>{stock_state}</td>
+                      <td>
+                        {stock_state === 'agotado' ? (
+                          <button
+                            className="btn btn-success"
+                            onClick={() => handleMarkAsAvailable(id)}
+                          >
+                             Marcar disponible
+                          </button>
+                        ) : (
+                          <button
+                            className="btn btn-danger"
                             onClick={() => handleMarkAsOutOfStock(id)}
                           >
                             Agotar
                           </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
-        ))}
+        </div>
       </div>
 
       <div className="row mt-4">
@@ -201,7 +225,7 @@ const AdminPanel = () => {
               <h5>Estadísticas</h5>
             </div>
             <div className="card-body">
-              <p><strong>Producto Más Vendido:</strong> {getMostSoldProduct()}</p>
+              <p><strong>Producto Más Vendido:</strong> {/* Aquí puedes implementar la lógica para el producto más vendido */}</p>
             </div>
           </div>
         </div>
