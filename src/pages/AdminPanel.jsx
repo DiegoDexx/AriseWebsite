@@ -124,6 +124,21 @@ const AdminPanel = () => {
     return <Login onLoginSuccess={() => setIsLogged(true)} />;
   }
 
+  /*MOST SOLD PRODUCT */
+  const getMostSoldProduct = () => {
+    const productCounts = {};
+
+    bookings.forEach((booking) => {
+      const { product_id } = booking;
+      productCounts[product_id] = (productCounts[product_id] || 0) + 1;
+    });
+
+    const mostSoldProductId = Object.keys(productCounts).reduce((a, b) => (productCounts[a] > productCounts[b] ? a : b), null);
+    const mostSoldProduct = allProducts.find((product) => product.id === parseInt(mostSoldProductId));
+
+    return mostSoldProduct ? mostSoldProduct.name : 'No data';
+  };
+
   return (
     <div className="container">
       <div className="row mt-4">
@@ -224,7 +239,7 @@ const AdminPanel = () => {
               <h5>Estadísticas</h5>
             </div>
             <div className="card-body">
-              <p><strong>Producto Más Vendido:</strong> {/* Aquí puedes implementar la lógica para el producto más vendido */}</p>
+              <p><strong>Producto Más Vendido:</strong> { getMostSoldProduct() }</p>
             </div>
           </div>
         </div>
