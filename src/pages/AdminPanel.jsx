@@ -180,7 +180,6 @@ const AdminPanel = () => {
                   <tr>
                     <th>Nombre de Producto</th>
                     <th>Talla</th>
-                    <th>Color</th>
                     <th>Estado de Stock</th>
                     <th>Acción</th>
                   </tr>
@@ -190,7 +189,7 @@ const AdminPanel = () => {
                     <tr key={id}>
                       <td>{name}</td>
                       <td>{size}</td>
-                      <td>{color}</td>
+             
                       <td>{stock_state}</td>
                       <td>
                         {stock_state === 'agotado' ? (
