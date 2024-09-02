@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import banner_background from '../assets/img/banner_background.png';
+import banner_background from '../assets/img/banner_background2.png';
 
 const Countdown = () => {
   
