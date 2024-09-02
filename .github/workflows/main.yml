@@ -1,0 +1,15 @@
+name: Scheduled Deploy
+on:
+  schedule:
+    - cron: "0 10 2 9 *"  # Ejecuta a las 10:00 AM UTC el 2 de septiembre de 2024
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Trigger Deploy
+        run: |
+          git add .
+          git commit -m "Scheduled deploy for 2nd September 2024" || echo "No changes to commit"
+          git push origin main
