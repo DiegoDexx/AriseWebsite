@@ -218,7 +218,7 @@ const ProductPage = () => {
 
         {stockState === 'disponible' && (
         <button className="reserve-button" onClick={handleReserve}>
-          Reservar
+          Comprar
         </button> )} { stockState === 'agotado' && (
         <button className="reserve-button" onClick={handleOutOfStock}>
           Agotado

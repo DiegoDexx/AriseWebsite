@@ -89,10 +89,10 @@ const BookingModal = ({ setShowBookingModal }) => {
     } catch (error) {
       if (error.response) {
         console.error('Error creando reserva:', error.response);
-        setErrors({ general: error.response.data.message || 'Error al crear la reserva.' });
+        setErrors({ general: error.response.data.message || 'Error durante la compra .' });
       } else {
         console.error('Error creando reserva:', error);
-        setErrors({ general: 'Error al crear la reserva.' });
+        setErrors({ general: 'Error durante la compra.' });
       }
     }
   };
@@ -182,13 +182,13 @@ const BookingModal = ({ setShowBookingModal }) => {
         <div className="modal-top">
           <img src={logo} alt="Arise Logo" className="logo" />
           <br />
-          <h4>¡Aprovecha y reserva tu producto!</h4>
+          <h4>¡Bienvenido al proceso de compra!</h4>
         </div>
         <div className="modal-content">
           {successBooking ? (
             <div className="success-message">
               <p>🎉 <strong>¡Felicidades, {formData.user_name}!</strong> 🎉</p>
-              <p>Su reserva de  <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong> está en tramite.</p>
+              <p>La compra de  <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong> está en tramite.</p>
               <p>El importe total es de <strong>€{formData.monto_pagado}</strong>.</p>
                <p>Nos pondremos pronto en contacto con usted a través del correo <strong>arisereservas@gmail.com</strong> para finalizar la operación.</p>
           
@@ -259,9 +259,9 @@ const BookingModal = ({ setShowBookingModal }) => {
               />
 
               {errors.general && <div className="error-message">{errors.general}</div>}
-              <button className="btn btn-primary" type="submit">Reservar tu producto</button>
+              <button className="btn btn-primary" type="submit">Comprar</button>
               <small>
-              La información recopilada no se compartirá con terceros y se <strong>eliminará después de las reservas</strong>
+              La información recopilada no se compartirá con terceros y se <strong>eliminará después del proceso de compra</strong>
               </small>
             </form>
           )}

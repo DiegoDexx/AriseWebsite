@@ -308,86 +308,138 @@ body .overlay {
     background-color: rgba(0, 0, 0, 0.8);
   }
 }
-.countdown-container {
+@keyframes fade-in-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes aparecer-derecha {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes aparecer-izquierda {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes aparecer-arriba {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes moveToTop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50px);
+  }
+}
+.banner2-container {
+  position: relative;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
+  height: 300px;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #f8f8f8;
+  overflow: hidden;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 768px) {
-  .countdown-container {
+  .banner2-container {
+    width: 100%;
+    height: 200px;
     flex-direction: column;
     text-align: center;
   }
 }
-.countdown-container .text-container {
-  flex: 1;
-  padding-right: 20px;
+.banner2-container .banner2-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(150, 150, 150, 0.7);
+  z-index: 1;
 }
-.countdown-container .text-container h1 {
-  font-size: 1.8rem;
-  color: #333;
+.banner2-container .banner2-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
 }
-.countdown-container .text-container h1 strong {
+.banner2-container .banner2-content {
+  position: relative;
+  z-index: 2;
+  width: 70%;
   font-size: 2rem;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.banner2-container .banner2-content h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.banner2-container .banner2-content strong {
+  font-size: 2.5rem;
+}
+.banner2-container .banner2-content .buy-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgb(7, 6, 6);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.banner2-container .banner2-content .buy-button:hover {
+  background-color: #e6e6e6;
+  color: black;
+  text-decoration: none;
 }
 @media (max-width: 768px) {
-  .countdown-container .text-container h1 {
-    font-size: 1.2rem;
-    padding-right: 15px;
-    width: 120%;
-    margin: 0 auto;
+  .banner2-container .banner2-content {
+    width: 90%;
+    padding: 20px;
   }
-  .countdown-container .text-container h1 strong {
+  .banner2-container .banner2-content h2 {
+    font-size: 1.8rem;
+  }
+  .banner2-container .banner2-content strong {
     font-size: 1.5rem;
   }
-}
-.countdown-container .timer-container {
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-}
-@media (max-width: 768px) {
-  .countdown-container .timer-container {
-    flex-direction: row;
-    margin-top: 20px;
-    width: 100%;
-    justify-content: center;
-  }
-}
-.countdown-container .timer-container .time-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2rem;
-  color: #333;
-}
-.countdown-container .timer-container .time-box .time {
-  font-size: 3rem;
-  font-weight: bold;
-  background-color: #333;
-  color: white;
-  padding: 15px;
-}
-@media (max-width: 768px) {
-  .countdown-container .timer-container .time-box .time {
-    font-size: 2rem;
-  }
-}
-.countdown-container .timer-container .time-box .label {
-  font-size: 1rem;
-  color: #777;
-}
-@media (max-width: 768px) {
-  .countdown-container .timer-container .time-box .label {
-    font-size: 0.8rem;
+  .banner2-container .banner2-content .buy-button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    margin-bottom: 20px;
   }
 }
 
