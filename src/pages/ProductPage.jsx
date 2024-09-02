@@ -104,7 +104,7 @@ const ProductPage = () => {
   // const discountPercentage = 20;
   // const discountedPrice = getDiscount(originalPrice, discountPercentage);
   // const totalPrice = discountedPrice * quantity;
-  // const originalTotalPrice = originalPrice * quantity;
+   const originalTotalPrice = originalPrice * quantity;
 
 
   return (
