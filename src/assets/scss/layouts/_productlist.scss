@@ -44,10 +44,10 @@
     }
 
     .original-price{
-      font-size: 0.9em;
-      color: #b82727;
-      text-decoration: line-through; // Para mostrar que es el precio original tachado
-      margin-right: 10px;
+      font-size: 1.1em; // Tamaño de fuente más grande para destacarse
+      color: #7a7979;; // Un rojo vibrante que atrae la atención
+     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); // Sombra ligera para dar profundidad
+     margin-right: 10px; // Espacio extra para separar de otros elementos
     
     }
   }

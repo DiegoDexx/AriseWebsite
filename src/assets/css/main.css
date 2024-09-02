@@ -528,9 +528,9 @@ body .overlay {
   margin-right: 10px;
 }
 .product-card .price-container .original-price {
-  font-size: 0.9em;
-  color: #b82727;
-  text-decoration: line-through;
+  font-size: 1.1em;
+  color: #7a7979;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   margin-right: 10px;
 }
 
@@ -1331,17 +1331,11 @@ body .overlay {
   color: #000000;
   margin-bottom: 1rem;
 }
-.product-page .product-details .price-container .discounted-price {
+.product-page .product-details .price-container .original-price {
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #000000;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  margin-right: 10px;
-}
-.product-page .product-details .price-container .original-price {
-  font-size: 16px;
-  color: #888;
-  text-decoration: line-through;
   margin-right: 10px;
 }
 .product-page .product-details .color-choose {

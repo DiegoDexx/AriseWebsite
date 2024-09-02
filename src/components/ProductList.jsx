@@ -64,7 +64,7 @@ const ProductList = () => {
             
             <div className='price-container'>
               <p className="original-price">€{product.price}</p>
-              <p className="discounted-price">€{calculateDiscount(product.price, discountPercentage)}</p>
+              {/* <p className="discounted-price">€{calculateDiscount(product.price, discountPercentage)}</p> */}
             </div>
           </div>
         </Link>

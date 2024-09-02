@@ -120,7 +120,6 @@ const ProductPage = () => {
             : 'OVERSIZE BUTTER CREAM BEIGE'}
         </h1>
         <div className="price-container">
-          <span className="discounted-price">€{totalPrice.toFixed(2)}</span>
           <span className="original-price">€{originalTotalPrice.toFixed(2)}</span>
         </div>
         
