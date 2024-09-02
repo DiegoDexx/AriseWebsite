@@ -190,7 +190,7 @@ const BookingModal = ({ setShowBookingModal }) => {
               <p>🎉 <strong>¡Felicidades, {formData.user_name}!</strong> 🎉</p>
               <p>La compra de  <strong>{formData.cantidad}</strong> unidad(es) del producto <strong>{product.name}</strong> está en tramite.</p>
               <p>El importe total es de <strong>€{formData.monto_pagado}</strong>.</p>
-               <p>Nos pondremos pronto en contacto con usted a través del correo <strong>arisereservas@gmail.com</strong> para finalizar la operación.</p>
+               <p>Nos pondremos pronto en contacto con usted a través del correo <strong>arisedireccion@gmail.com</strong> para finalizar la operación.</p>
           
             </div>
           ) : (

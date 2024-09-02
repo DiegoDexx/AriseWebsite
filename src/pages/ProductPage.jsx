@@ -88,7 +88,7 @@ const ProductPage = () => {
       return;
     }
     localStorage.setItem('selectedProduct', JSON.stringify(productData));
-    saveItem("monto", totalPrice.toFixed(2));
+    saveItem("monto", selectedPrice);
     saveItem("quantity", quantity);
 
    
@@ -101,10 +101,10 @@ const ProductPage = () => {
   }
 
   const originalPrice = selectedPrice;
-  const discountPercentage = 20;
-  const discountedPrice = getDiscount(originalPrice, discountPercentage);
-  const totalPrice = discountedPrice * quantity;
-  const originalTotalPrice = originalPrice * quantity;
+  // const discountPercentage = 20;
+  // const discountedPrice = getDiscount(originalPrice, discountPercentage);
+  // const totalPrice = discountedPrice * quantity;
+  // const originalTotalPrice = originalPrice * quantity;
 
 
   return (
