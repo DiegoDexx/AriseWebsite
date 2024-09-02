@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import banner_backround from '../assets/img/banner_backround.png';
 
 const Countdown = () => {
   const calculateTimeLeft = (targetDate) => {
