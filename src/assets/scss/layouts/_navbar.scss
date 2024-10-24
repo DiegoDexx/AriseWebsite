@@ -21,13 +21,23 @@
     margin-top: 90px;
     background-color: rgba(0, 0, 0, 0.95);
     height: 80px;
-    padding: 0.4vh;
+
     @include sticky-navbar(25px);
 
     @include mobile() {
       @include sticky-navbar(35px);
 
       .head-container{
+        .logo-container{
+          a{
+            
+            img{
+            height: 10vh;
+          }
+        }
+
+        }
+
         a.icon{
           top: 10px;
           
@@ -35,7 +45,13 @@
 
         .options-container{
           .search-container{
-            top: 5.3vw;
+            top: 5vw;
+          }
+
+          .menu-container{
+            &.responsive{
+              top: 8.5vh;
+            }
           }
       }
     }
@@ -51,6 +67,8 @@
       @include sticky-navbar(40px);
 
       .head-container{
+        
+
         a.icon{
           top: 1px;
           

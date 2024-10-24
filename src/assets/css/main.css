@@ -338,7 +338,6 @@ body .overlay {
   margin-top: 90px;
   background-color: rgba(0, 0, 0, 0.95);
   height: 80px;
-  padding: 0.4vh;
   position: sticky;
   top: 25px;
   width: 100%;
@@ -355,11 +354,17 @@ body .overlay {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
   }
+  .topnav.secondary-navbar .head-container .logo-container a img {
+    height: 10vh;
+  }
   .topnav.secondary-navbar .head-container a.icon {
     top: 10px;
   }
   .topnav.secondary-navbar .head-container .options-container .search-container {
-    top: 5.3vw;
+    top: 5vw;
+  }
+  .topnav.secondary-navbar .head-container .options-container .menu-container.responsive {
+    top: 8.5vh;
   }
 }
 .topnav.tertiary-navbar {
