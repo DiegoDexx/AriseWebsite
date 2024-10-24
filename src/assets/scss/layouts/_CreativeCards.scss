@@ -3,17 +3,7 @@
 @import '../abstract/mixins';
 
 
-body {
-  font-size: 17px;
-  line-height: 30px;
-  font-weight: 400;
-  -moz-osx-font-smoothing: grayscale;
-  word-break: break-word;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Epilogue", sans-serif;
-  margin: 0;
-  background: #fff;
-}
+
 
 * {
   box-sizing: border-box;
