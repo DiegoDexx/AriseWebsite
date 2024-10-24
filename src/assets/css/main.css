@@ -504,7 +504,7 @@ body .overlay {
   }
   .topnav .head-container a.icon {
     display: block;
-    font-size: 3vh;
+    font-size: 3.5vh;
     cursor: pointer;
     padding: 10px;
     color: white;
@@ -575,7 +575,7 @@ body .overlay {
     background-color: #333;
   }
   .topnav .head-container .options-container .search-container button svg {
-    font-size: 3vh;
+    font-size: 3.5vh;
   }
   .topnav .head-container .options-container .search-container.active {
     position: absolute;
