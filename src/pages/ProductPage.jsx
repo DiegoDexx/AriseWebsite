@@ -173,7 +173,7 @@ const ProductPage = () => {
         <div className="genre-selector">
           <label htmlFor="genre">Género:</label>
           {selectedGenre === 'unisex' ? (
-            <span>Unisex</span>
+            <span className='unisex-button'>Unisex</span>
           ) : (
             <div className="button-group">
               <button

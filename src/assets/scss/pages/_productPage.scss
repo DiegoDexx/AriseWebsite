@@ -80,12 +80,16 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-bottom: 10vh;
+    padding-bottom: 28vh;
     gap: 3px;
     margin-left: 1rem;
 
+    @include laptop() {
+      padding-bottom: 10vh;
+    }
+
     h1 {
-      font-size: 1.3rem;
+      font-size: 1.7rem;
       margin-bottom: 1rem;
       text-align: left;
       font-weight: 600;
@@ -179,6 +183,15 @@
       label {
         font-weight: bold;
         margin-bottom: 0.5rem;
+      }
+
+      .unisex-button {
+        padding: 5px;
+        background-color: #fffefe;
+        color: #000000;
+        border: 1px solid;
+        border-color: #000000 ;
+
       }
 
       .button-group {

@@ -2089,12 +2089,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-bottom: 10vh;
+  padding-bottom: 28vh;
   gap: 3px;
   margin-left: 1rem;
 }
+@media only screen and (min-width: 768px) and (max-width: 1600px) {
+  .product-page .product-details {
+    padding-bottom: 10vh;
+  }
+}
 .product-page .product-details h1 {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   margin-bottom: 1rem;
   text-align: left;
   font-weight: 600;
@@ -2184,6 +2189,13 @@ body {
 .product-page .product-details .genre-selector label {
   font-weight: bold;
   margin-bottom: 0.5rem;
+}
+.product-page .product-details .genre-selector .unisex-button {
+  padding: 5px;
+  background-color: #fffefe;
+  color: #000000;
+  border: 1px solid;
+  border-color: #000000;
 }
 .product-page .product-details .genre-selector .button-group {
   display: flex;
