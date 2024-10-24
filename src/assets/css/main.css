@@ -359,7 +359,7 @@ body .overlay {
     top: 10px;
   }
   .topnav.secondary-navbar .head-container .options-container .search-container {
-    top: 20px;
+    top: 25px;
   }
 }
 .topnav.tertiary-navbar {
@@ -2089,13 +2089,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-bottom: 28vh;
+  padding-bottom: 19vh;
   gap: 3px;
   margin-left: 1rem;
 }
 @media only screen and (min-width: 768px) and (max-width: 1600px) {
   .product-page .product-details {
-    padding-bottom: 10vh;
+    padding-bottom: 1vh;
   }
 }
 .product-page .product-details h1 {
