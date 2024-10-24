@@ -392,6 +392,9 @@ body .overlay {
   .topnav.tertiary-navbar .head-container .options-container .search-container {
     top: 10px;
   }
+  .topnav.tertiary-navbar .head-container .options-container .menu-container.responsive {
+    top: 8.5vh;
+  }
 }
 .topnav .head-container {
   display: flex;

@@ -78,6 +78,12 @@
           .search-container{
             top: 10px;
           }
+
+          .menu-container{
+            &.responsive{
+              top: 8.5vh;
+            }
+          }
       }
     }
   }
