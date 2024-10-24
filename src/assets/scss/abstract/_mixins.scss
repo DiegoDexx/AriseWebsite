@@ -52,3 +52,12 @@
     }
 }
 
+ //sticky navbar SCROLL
+  @mixin sticky-navbar($top: 0) {
+    position: sticky;
+    top: $top;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }

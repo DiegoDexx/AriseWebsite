@@ -2,23 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage.jsx';
+import TopPromotion from './components/TopPromotion.jsx';
 import NavBar from './components/Navbar.jsx';
-import { AuthProvider } from './contexts/AuthContext'; // Importar el AuthProvider
+import { AuthProvider } from './contexts/AuthContext';
 import AdminPanel from './pages/AdminPanel.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
-import './App.css';
+import AdviceModal from './components/AdviceModal.jsx';
+import ScrollToTopButton from './components/ScrollToTopButton.jsx'; // Importa tu botón
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simula una operación de carga (como la carga de datos inicial)
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // Ajusta el tiempo de espera según sea necesario
+    }, 3000);
 
-    return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -37,6 +38,8 @@ function App() {
               <Route path="contact" element={<ContactPage />} />
               <Route path="*" element={<h3>Not Found</h3>} />
             </Routes>
+            <AdviceModal />
+            <ScrollToTopButton /> 
           </>
         )}
       </Router>

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300');
+@import '../abstract/variables';
+@import '../abstract/mixins';
+@import '../components/separator';
+
+
+.promotion-bar {
+    background-color: #fafafa; // Color de fondo (puedes ajustarlo según tu diseño)
+    color: #000000;
+    padding: 0.25rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: -webkit-sticky; /* Para compatibilidad con Safari */
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000; // Un valor mayor que el del NavBar para que esté encima
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    p {
+      margin: 0;
+      flex: 1;
+    }
+  
+    .close-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 0.45rem;
+      cursor: pointer;
+      padding: 0 1rem;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: #ffd700; // Dorado al pasar el cursor
+      }
+    }
+  }
+  
+  .promotion-bar-responsive {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  
+    .close-btn {
+      font-size: 1.25rem;
+      padding: 0 0.5rem;
+    }
+  }
+  
+  // Ajustes para dispositivos móviles
+  @include mobile() {
+    .promotion-bar {
+      font-size: 0.8rem;
+      padding: 0.3rem;
+  
+      .close-btn {
+        font-size: 1rem;
+      }
+    }
+  }
+  

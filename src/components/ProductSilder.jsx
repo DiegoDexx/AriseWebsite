@@ -36,6 +36,17 @@ const ProductSlider = ({ selectedColor }) => {
 
   return (
     <div className="product-slider">
+      <div className="thumbnail-gallery">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Thumbnail ${index + 1}`}
+            className={`thumbnail-image ${index === currentIndex ? 'active' : ''}`}
+            onClick={() => handleThumbnailClick(index)}
+          />
+        ))}
+      </div>
       <div className="slider-container">
         <button onClick={prevImage} className="prev-button">←</button>
         {images.map((image, index) => (
@@ -48,17 +59,6 @@ const ProductSlider = ({ selectedColor }) => {
           </div>
         ))}
         <button onClick={nextImage} className="next-button">→</button>
-      </div>
-      <div className="thumbnail-gallery">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Thumbnail ${index + 1}`}
-            className={`thumbnail-image ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => handleThumbnailClick(index)}
-          />
-        ))}
       </div>
     </div>
   );

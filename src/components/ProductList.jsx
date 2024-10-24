@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import apiClient from '../hooks/axiosMethods'; // Importa apiClient
-import camiseta1 from '../assets/img/white (2).png';
-import beige1 from '../assets/img/beige (2).png';
+import apiClient from '../hooks/axiosMethods';
+import portada1 from '../assets/img/banner_background4.png';
+import portada2 from '../assets/img/banner_background6.png';
+import banner7 from '../assets/img/banner_background7.png';
+
+import camisetaBlanca from '../assets/img/camisetaBlanca.png';
+import camisetaBeige from '../assets/img/camisetaBeige.png';
+
+
 import { saveProductSelection } from '../functions/localStorage';
 import { getDiscount } from '../functions/functions';
 
@@ -11,20 +17,17 @@ const discountPercentage = 20;
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [isHovered, setIsHovered] = useState(false);
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    apiClient.get('/products') // Usa apiClient para realizar la solicitud
+    apiClient.get('/products')
       .then(response => {
         const uniqueProducts = [];
         const seenColors = new Set();
 
-        // console.log(response);
-
-        // Guarda todos los productos en productData
         setProductData(response.data);
 
-        // Filtra productos únicos por color
         response.data.forEach(product => {
           if (!seenColors.has(product.color)) {
             uniqueProducts.push(product);
@@ -32,11 +35,14 @@ const ProductList = () => {
           }
         });
 
-        // Establece productos únicos en products
         setProducts(uniqueProducts);
       })
       .catch(error => console.error('Error fetching products:', error));
   }, []);
+
+  const changeImageHover = (product) => {
+
+  }
 
   const handleProductClick = (productId, color, price, description, stock) => {
     saveProductSelection({ productId, color, price, description, stock });
@@ -48,28 +54,39 @@ const ProductList = () => {
   };
 
   return (
-    <div className="product-list">
-      {products.map((product, index) => (
-        <Link to={`/products/${product.id}`} key={index}>
-          <div
-            className="product-card"
-            onClick={() => handleProductClick(product.id, product.color, product.price, product.description, product.stock_state)}
-          >
-            <img
-              src={product.color === 'white' ? camiseta1 : beige1}
-              alt={product.color === 'white' ? 'Camiseta Arise Blanca' : 'Camiseta Arise Beige'}
-              className="product-image"
-            />
-            <h2 className="product-name">{product.name}</h2>
-            
-            <div className='price-container'>
-              <p className="original-price">€{product.price}</p>
-              {/* <p className="discounted-price">€{calculateDiscount(product.price, discountPercentage)}</p> */}
+    <>
+      <h2 className='title'>NUESTROS PRODUCTOS AL MEJOR PRECIO: </h2>
+      <div className="product-list">
+        {products.map((product, index) => (
+          <Link to={`/products/${product.id}`} key={index}>
+            <div
+              className="product-card"
+              onClick={() => handleProductClick(product.id, product.color, product.price, product.description, product.stock_state)}
+            >
+              <img
+                src={product.color === 'white' ? portada1 : portada2}
+                alt={product.color === 'white' ? 'Camiseta Arise Blanca' : 'Camiseta Arise Beige'}
+                className="product-image"
+              />
+
+              {/* Superposición que se mostrará al hacer hover */}
+              <div className="product-overlay">
+                <h2 className="product-name">{product.name}</h2>
+                <div className='price-container'>
+                  <p className="original-price">€{product.price}</p>
+                  {/* {discountPercentage > 0 && (
+                    <p className="discounted-price">€{calculateDiscount(product.price, discountPercentage)}</p>
+                  )} */}
+                </div>
+
+                  {/* Botón de añadir al carrito */}
+                  <button className="add-to-cart-button">Añadir al carrito</button>
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
-    </div>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 };
 

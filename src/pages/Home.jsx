@@ -1,6 +1,7 @@
 import React from 'react';
-import Countdown from '../components/Countdown';
+import Banner from '../components/Banner';
 import ProductList from '../components/ProductList';
+import CreativeCards from './CreativeCards';
 import NavBar from '../components/Navbar';
 
 function Home() {
@@ -10,9 +11,12 @@ function Home() {
             {/**NAVBAR */}
        
       </header>
-      <Countdown days={10} />
       
+      <Banner />
       <ProductList />
+      <CreativeCards />
+
+
 
     </div>
   );

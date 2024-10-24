@@ -1,0 +1,71 @@
+
+      // .banner-inner-image {
+      //    @include flex-container(row, center, center);
+      //    position: relative;
+      //    width: 35%; // Aumenta el tamaño del área de imágenes
+      //    height: auto;
+        
+      //    padding: 0; // Elimina padding de la imagen para asegurar máximo espacio
+      //    opacity: 0; // Inicialmente oculto
+      //    transform: translateY(100px); // Comienza desplazado para el efecto de aparición
+      //    @include fade-in(1.2s); 
+
+      //    @include mobile() {
+      //       width: 100%; // Ajuste del ancho en mobile
+      //       height: 50vh; 
+      //    }
+
+      //    @include laptop() {
+      //       width: 40%;
+            
+      //    }
+
+      //    img {
+      //       max-width: 100%;
+      //       border: 1px solid rgb(0, 0, 0, 0.2);
+      //       border-radius: 0.25rem;
+      //       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      //       background-color:rgba(0, 0, 0, 0.1);
+      //       height: auto;
+      //       object-fit: cover; 
+
+      //       @include mobile() {
+      //          max-width: 75%; 
+      //       }
+      //    }
+
+      //    .white2 {
+      //       position: absolute;
+      //       z-index: 2;
+      //       bottom: -90px; // Ajuste de posición para acercar la imagen
+      //       left: 35%; // Ajuste horizontal para que estén más cerca
+      //       transform: scale(1.2); // Aumenta el tamaño de la imagen ligeramente
+      //       opacity: 0; // Inicialmente oculto
+      //       @include fade-in(1.2s); // Fade-in con la animación aplicada
+
+      //       @include mobile() {
+      //          bottom: -20px; // Ajuste de la posición en mobile
+      //          left: 20px;
+      //          transform: scale(0.9); // Reduce el tamaño en mobile
+
+      //       }
+      //    }
+
+      //    .white1 {
+      //       position: absolute;
+      //       z-index: 1;
+      //       top: -30px; // Baja la imagen superior para que estén más cerca
+      //       left: 75px;
+      //       opacity: 0.85; // Ligera opacidad para que se vea más elegante
+      //       transform: scale(1.25); // Aumenta el tamaño de la imagen de fondo
+      //       opacity: 0; // Inicialmente oculto
+      //       @include fade-in(1); // Fade-in con animación aplicada
+
+      //       @include mobile() {
+      //          top: -10px; // Ajuste de la posición en mobile
+      //          left: 60px;
+      //          transform: scale(0.9); // Reduce el tamaño en mobile
+      //       }
+      //    }
+         
+      // }

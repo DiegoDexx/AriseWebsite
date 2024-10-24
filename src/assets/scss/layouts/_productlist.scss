@@ -1,75 +1,144 @@
 @import "../abstract/variables";  // Asegúrate de importar tus variables si las tienes
 @import "../abstract/mixins";    // Asegúrate de importar tus mixins si los tienes
 
+.title {
+  max-width: 97.92%!important;
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+  font-size: 2rem;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 auto;
+
+  @include mobile() {
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 2rem;
+  }
+}
+
 .product-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 45px;
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.product-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 16px;
-  text-align: center;
-  transition: transform 0.2s;
-  
-  &:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-  }
-
-  .product-name{
-    font-size: 14px;
-    color: #5a5a5a;
-    
-  }
-
-  .price-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-
-    .discounted-price{
-      font-size: 1.2em; // Tamaño de fuente más grande para destacarse
-      color: #7a7979;; // Un rojo vibrante que atrae la atención
-     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); // Sombra ligera para dar profundidad
-     margin-right: 10px; // Espacio extra para separar de otros elementos
-    }
-
-    .original-price{
-      font-size: 1.1em; // Tamaño de fuente más grande para destacarse
-      color: #7a7979;; // Un rojo vibrante que atrae la atención
-     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); // Sombra ligera para dar profundidad
-     margin-right: 10px; // Espacio extra para separar de otros elementos
-    
-    }
-  }
-
-
-}
-
-.product-image {
+  gap: 1rem;
+  max-width: 97.92%;
   width: 100%;
-  height: auto;
-  border-radius: 4px;
+  margin: 0 auto;
+
+  // Responsive para móviles
+  @include mobile() {
+    grid-template-columns: 1fr;  // Solo una columna en móviles
+    gap: 0.5rem;
+  }
+
+  .product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+
+      .product-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .product-image {
+        filter: blur(2px) brightness(0.7); // Difumina y oscurece la imagen en hover
+      }
+    }
+
+    .product-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6); // Fondo semitransparente oscuro
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0; // Inicialmente oculto
+      transform: translateY(5%);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      
+      .product-name {
+        font-size: 1.4em;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      .price-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .original-price {
+          font-size: 1.2em;
+          color: #f2f2f2;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .discounted-price {
+          font-size: 1.2em;
+          color: #f54242; // Rojo vibrante para el precio con descuento
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+      }
+      .add-to-cart-button {
+        //background con opacidad
+        background: rgba(0, 0, 0, 0.1);
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    
+        &:hover {
+          background-color: #fffffd;
+          color: #000;
+        }
+      }
+
+    }
+  }
+
+  .product-image {
+    width: 100%;
+    height: 670px; // Mantiene la altura de las imágenes grandes
+    object-fit: cover;
+    border-radius: 4px;
+    transition: filter 0.3s ease; // Efecto suave en hover
+  }
+
+  // Ajustes para móviles
+  @include mobile() {
+    .product-card {
+      margin: 0 auto;  // Centra el contenedor en móviles
+
+      .product-image {
+        height: 400px;  // Reduce la altura de las imágenes en móviles
+      }
+
+      // En móviles, mostramos el overlay por defecto
+      .product-overlay {
+        opacity: 1; // Muestra el overlay por defecto
+        transform: translateY(0); // Sin desplazamiento
+        background: rgba(0, 0, 0, 0.4); // Fondo más ligero en móviles
+      }
+    }
+  }
 }
-
-.product-name {
-  font-size: 1.2em;
-  margin: 10px 0;
-  color: #333;
-}
-
-.product-price {
-  font-size: 1em;
-  color: #666;
-}
-
-

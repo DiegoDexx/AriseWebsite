@@ -17,13 +17,12 @@ const ProductPage = () => {
   const [selectedName, setSelectedName] = useState('');
   const [selectedSize, setSelectedSize] = useState('XS');
   const [selectedDescription, setSelectedDescription] = useState('');
+  const [selectedGenre, setSelectedGenre] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
   const [stockState, setStockState] = useState('');
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [showBookingModal, setShowBookingModal] = useState(false);
 
-
-  // Fetch product details logic omitted for brevity
   useEffect(() => {
     const productString = getProductSelection();
     if (productString) {
@@ -32,6 +31,7 @@ const ProductPage = () => {
         setSelectedProductId(product.productId.productId);
         setSelectedName(product.productId.name);
         setSelectedColor(product.productId.color);
+        setSelectedGenre(product.productId.sex || '');
         setSelectedDescription(product.productId.description || '');
         setSelectedPrice(product.productId.price || '');
         setStockState(product.productId.stock_state || '');
@@ -50,6 +50,7 @@ const ProductPage = () => {
             setSelectedProduct(productData);
             setSelectedProductId(productData.productId);
             setSelectedName(productData.name);
+            setSelectedGenre(productData.sex); // Usar "sex" como "genre"
             setSelectedPrice(productData.price);
             setSelectedDescription(productData.description);
             setStockState(productData.stock_state);
@@ -80,6 +81,7 @@ const ProductPage = () => {
       productId: product_id,
       name: selectedName,
       color: selectedColor,
+      genre: selectedGenre,
       size: selectedSize,
       quantity: quantity
     };
@@ -91,24 +93,31 @@ const ProductPage = () => {
     saveItem("monto", selectedPrice);
     saveItem("quantity", quantity);
 
-   
     setShowBookingModal(true);  
-
-    
   };
+
   const handleOutOfStock = () => {
     alert('Producto agotado');
   }
 
   const originalPrice = selectedPrice;
-  // const discountPercentage = 20;
-  // const discountedPrice = getDiscount(originalPrice, discountPercentage);
-  // const totalPrice = discountedPrice * quantity;
-   const originalTotalPrice = originalPrice * quantity;
-
+  const originalTotalPrice = originalPrice * quantity;
 
   return (
+
+  <>
+      {/* Menu de navegación */}
+      <nav className="productPage_nav">
+        <ul>
+          <li><a href="/reservas"> ← Volver a Inicio </a></li>
+          <li>/</li>
+          <li><a>{selectedColor === 'white'
+            ? 'OVERSIZE FRESH WHITE'
+            : 'OVERSIZE BUTTER CREAM BEIGE'} </a></li>
+        </ul>
+      </nav>
     <div className="product-page">
+
       {showBookingModal && <BookingModal setShowBookingModal={setShowBookingModal} />}
       
       <ProductSlider selectedColor={selectedColor} />
@@ -121,8 +130,11 @@ const ProductPage = () => {
         </h1>
         <div className="price-container">
           <span className="original-price">€{originalTotalPrice.toFixed(2)}</span>
+          <small className='small-text'> {/**Especificar que no se incluye gastos de envio ni impuestos */}
+            Incluyendo IVA, no gastos de envío!
+          </small>
         </div>
-        
+
         <div className="color-choose">
           <label htmlFor="color">Color:</label>
           <div className='row-colors'>
@@ -155,6 +167,29 @@ const ProductPage = () => {
               </label>
             </div>
           </div>
+        </div>
+        
+        {/* Genre Selector */}
+        <div className="genre-selector">
+          <label htmlFor="genre">Género:</label>
+          {selectedGenre === 'unisex' ? (
+            <span>Unisex</span>
+          ) : (
+            <div className="button-group">
+              <button
+                className={`genre-button ${selectedGenre === 'hombre' ? 'active' : ''}`}
+                onClick={() => setSelectedGenre('hombre')}
+              >
+                Hombre
+              </button>
+              <button
+                className={`genre-button ${selectedGenre === 'mujer' ? 'active' : ''}`}
+                onClick={() => setSelectedGenre('mujer')}
+              >
+                Mujer
+              </button>
+            </div>
+          )}
         </div>
         
         <div className="size-selector">
@@ -206,7 +241,6 @@ const ProductPage = () => {
           )}
         </div>
 
-        {/* Pass quantity and setQuantity to QuantitySelector */}
         <QuantitySelector 
           quantity={quantity} 
           setQuantity={setQuantity} 
@@ -215,16 +249,21 @@ const ProductPage = () => {
         
         <SelectInfo description={selectedDescription} />
 
-        {stockState === 'disponible' && (
-        <button className="reserve-button" onClick={handleReserve}>
-          Comprar
-        </button> )} { stockState === 'agotado' && (
-        <button className="reserve-button" onClick={handleOutOfStock}>
-          Agotado
-        </button>
-        )}
+        <div className="sticky-reserve-button">
+          {stockState === 'disponible' ? (
+            <button className="reserve-button" onClick={handleReserve}>
+              Añadir al carrito
+            </button>
+          ) : (
+            <button className="reserve-button" onClick={handleOutOfStock}>
+              Agotado
+            </button>
+          )}
+        </div>
+    
       </div>
     </div>
+    </>
   );
 };
 

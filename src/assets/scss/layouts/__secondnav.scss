@@ -3,70 +3,18 @@
 @import '../abstract/mixins';
 
 .topnav {
+ 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0);
+  opacity: 0.95;
+  top: 0;
   width: 100%;
   z-index: 1000;
   transition: background-color 0.3s ease;
+  height: 90px;
   padding: 0 16px;
-  
-  &.primary-navbar {
-    background-image: url('../img/banner_background3.png');
-    height: 90vh;
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-
-  &.secondary-navbar {
-    margin-top: 90px;
-    background-color: rgba(0, 0, 0, 0.95);
-    height: 80px;
-    padding: 0.4vh;
-    @include sticky-navbar(25px);
-
-    @include mobile() {
-      @include sticky-navbar(40px);
-
-      .head-container{
-        a.icon{
-          top: 10px;
-          
-        }
-
-        .options-container{
-          .search-container{
-            top: 20px;
-          }
-      }
-    }
-  }
-}
-
-  &.tertiary-navbar {
-    background-color: rgba(0, 0, 0, 0.95);
-    height: 80px;
-    padding: 0.4vh;
-    @include sticky-navbar(25px);
-
-    @include mobile() {
-      @include sticky-navbar(40px);
-
-      .head-container{
-        a.icon{
-          top: 1px;
-          
-        }
-
-        .options-container{
-          .search-container{
-            top: 10px;
-          }
-      }
-    }
-  }
-  }
-
- 
 
   .head-container {
     @include flex-container(row, space-between, center);
@@ -202,7 +150,7 @@
         color: white;
         border-radius: 50%;
         position: absolute;
-        top: 45px;
+        top: 0;
         right: 16px;
       }
 
@@ -222,15 +170,14 @@
           @include flex-container(column, flex-start, flex-end);
           background-color: black;
           position: absolute;
-          top: 75px;
+          top: 55px;
           padding: 5px;
           width: 100%;
           height: auto;
           right: 0;
 
           a:not(.icon) {
-            @include flex-container(row, flex-end, center);
-            gap: 5px;
+            display: block;
             text-align: right;
             padding: 10px 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -252,7 +199,7 @@
       .search-container {
         position: absolute;
         right: 36px;
-        top: 55px; // Fijo en responsive para que no se mueva
+        top: 10px; // Fijo en responsive para que no se mueva
         width: auto; // Para evitar que se estire
 
         button {

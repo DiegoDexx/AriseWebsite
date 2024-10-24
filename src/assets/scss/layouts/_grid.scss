@@ -6,7 +6,7 @@
     grid-template-columns: repeat($grid-columns, 1fr);
     //   grid-template-rows: auto 2fr auto;
     gap: 20px; 
-    height: auto;
+
     width: auto;
     margin: 0 auto;
 
@@ -15,7 +15,7 @@
         grid-column-start: 1;
         grid-column-end: calc($grid-columns + 1);
         // border: 1px solid red;
-        height: 95vh; 
+      
 
         &--col-1-1 {
             grid-column-start: 1;

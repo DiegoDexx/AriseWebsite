@@ -1,0 +1,176 @@
+.banner {
+   &-column {
+     position: relative;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     max-width: 97.92% !important;
+     width: 100%;
+     margin: 0 auto;
+     height: 80vh;
+     margin-top: 2rem;
+     margin-bottom: 1rem;
+     padding: 3rem;
+ 
+     @include mobile() {
+       flex-direction: column;
+       height: auto;
+     }
+   }
+ 
+   .banner-inner {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     width: 100%;
+     gap: 6.5rem;
+ 
+     @include mobile() {
+       flex-direction: column;
+       text-align: center;
+       gap: 1.5rem;
+     }
+ 
+     &-content {
+       width: 55%;
+       opacity: 0;
+       padding: 10px;
+       @include fade-in(1s);
+       @include flex-container(column, left, flex-start);
+ 
+       @include mobile() {
+         width: 100%;
+       }
+ 
+       h2 {
+         text-align: left;
+         font-size: 2.6rem;
+         font-family: 'Rubik', sans-serif;
+         font-weight: 600;
+         line-height: 1.25;
+         opacity: 0;
+         @include aparecer-desde-derecha(1s);
+ 
+         @include laptop() {
+           font-size: 2.3rem;
+         }
+ 
+         @include mobile() {
+           text-align: center;
+           font-size: 1.7rem;
+         }
+       }
+ 
+       p {
+         font-size: 1.2rem;
+         line-height: 1.6;
+         margin: 1.5rem 0;
+         opacity: 0;
+         @include aparecer-desde-izquierda(1s);
+         text-align: left;
+ 
+         @include mobile() {
+           text-align: center;
+           font-size: 0.9rem;
+         }
+       }
+ 
+       button {
+         padding: 12px 35px;
+         font-size: 1rem;
+         font-weight: 600;
+         color: whitesmoke;
+         background: black;
+         border: none;
+         border-radius: 0.25rem;
+         cursor: pointer;
+         transition: background 0.3s ease;
+         opacity: 0;
+         @include aparecer-desde-arriba(1s);
+         font-family: 'Open Sans', sans-serif;
+ 
+         &:hover {
+           color: rgb(0, 0, 0);
+           background: var(--color-primary-600);
+           border: 1px solid black;
+         }
+ 
+         svg {
+           margin-left: 0.5rem;
+         }
+ 
+         @include mobile() {
+           padding: 10px 25px;
+           font-size: 0.95rem;
+           align-self: center;
+         }
+       }
+
+       &.fade-in {
+         opacity: 0;
+         transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+       }
+     
+       &.aparecer-derecha {
+         opacity: 0;
+         transform: translateX(100%);
+         transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+       }
+     
+       &.aparecer-izquierda {
+         opacity: 0;
+         transform: translateX(-100%);
+         transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+       }
+     
+       &.aparecer-arriba {
+         opacity: 0;
+         transform: translateY(-100%);
+         transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+       }
+     
+       &.visible {
+         opacity: 1;
+         transform: translateX(0) translateY(0);
+       }
+
+     }
+ 
+     .banner-inner-image {
+       @include flex-container(row, center, center);
+       position: relative;
+       bottom: 100px;
+       width: 30%; // Mantiene la imagen más pequeña en pantallas grandes
+       height: auto;
+       padding: 0;
+       opacity: 0;
+       transform: translateY(100px);
+       border: 1px solid black;
+       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+       clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+       @include fade-in(1.2s);
+ 
+       img {
+         width: 95%;
+         height: auto;
+         object-fit: cover;
+       }
+ 
+       // Ajuste responsivo en pantallas más pequeñas
+       @include mobile() {
+         margin-top: 1.5rem;
+         width: 70%; // Ajuste para mobile, imagen más pequeña
+         clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); // Ajuste clip-path en mobile
+       }
+ 
+       @include laptop() {
+         width: 31.5%; // Un tamaño intermedio en pantallas medianas
+         height: auto;
+       }
+     }
+   }
+ 
+   // Efectos de fade-in y animaciones
+   
+ }
+ 
