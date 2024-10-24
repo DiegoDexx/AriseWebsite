@@ -25,7 +25,7 @@
     @include sticky-navbar(25px);
 
     @include mobile() {
-      @include sticky-navbar(40px);
+      @include sticky-navbar(35px);
 
       .head-container{
         a.icon{
@@ -220,7 +220,7 @@
           @include flex-container(column, flex-start, flex-end);
           background-color: black;
           position: absolute;
-          top: 10vh; // Ajustar posición en base a vh
+          top: 12.5vh; // Ajustar posición en base a vh
           padding: 5px;
           width: 100%;
           height: auto;
@@ -249,6 +249,7 @@
         position: absolute;
         right: 7vw; // Ajustar con vw
         top: 7vh; // Cambiar a vh para mayor responsividad
+        margin-right: 20px;
         width: auto;
 
         button {
