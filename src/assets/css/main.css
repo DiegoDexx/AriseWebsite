@@ -359,15 +359,14 @@ body .overlay {
     top: 10px;
   }
   .topnav.secondary-navbar .head-container .options-container .search-container {
-    top: 25px;
+    top: 5.3vw;
   }
 }
 .topnav.tertiary-navbar {
   background-color: rgba(0, 0, 0, 0.95);
-  height: 80px;
-  padding: 0.4vh;
+  height: 70px;
   position: sticky;
-  top: 25px;
+  top: 0;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -501,18 +500,18 @@ body .overlay {
     height: 670px;
   }
   .topnav .head-container .logo-container a img {
-    height: 60px;
+    height: 8vh;
   }
   .topnav .head-container a.icon {
     display: block;
-    font-size: 24px;
+    font-size: 3vh;
     cursor: pointer;
     padding: 10px;
     color: white;
     border-radius: 50%;
     position: absolute;
-    top: 45px;
-    right: 16px;
+    top: 6vh;
+    right: 2vw;
   }
   .topnav .head-container:hover {
     background-color: rgba(61, 59, 59, 0.9);
@@ -533,7 +532,7 @@ body .overlay {
     align-items: flex-end;
     background-color: black;
     position: absolute;
-    top: 75px;
+    top: 10vh;
     padding: 5px;
     width: 100%;
     height: auto;
@@ -553,20 +552,20 @@ body .overlay {
   }
   .topnav .head-container .options-container .menu-container.responsive a.icon {
     position: absolute;
-    right: 16px;
+    right: 2vw;
     top: 0;
   }
   .topnav .head-container .options-container .search-container {
     position: absolute;
-    right: 36px;
-    top: 55px;
+    right: 7vw;
+    top: 7vh;
     width: auto;
   }
   .topnav .head-container .options-container .search-container button {
     padding: 6px 10px;
     background-color: rgba(0, 0, 0, 0.2);
     color: white;
-    font-size: 17px;
+    font-size: 3vh;
     border: none;
     cursor: pointer;
     border-radius: 50%;
@@ -576,7 +575,7 @@ body .overlay {
     background-color: #333;
   }
   .topnav .head-container .options-container .search-container button svg {
-    font-size: 20px;
+    font-size: 3vh;
   }
   .topnav .head-container .options-container .search-container.active {
     position: absolute;
@@ -596,10 +595,10 @@ body .overlay {
     width: 100%;
     opacity: 1;
     padding: 6px;
-    font-size: 17px;
+    font-size: 2vh;
     border: none;
     background: #f1f1f1;
-    height: 25px;
+    height: 5vh;
   }
 }
 

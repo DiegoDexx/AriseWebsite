@@ -35,7 +35,7 @@
 
         .options-container{
           .search-container{
-            top: 25px;
+            top: 5.3vw;
           }
       }
     }
@@ -44,9 +44,8 @@
 
   &.tertiary-navbar {
     background-color: rgba(0, 0, 0, 0.95);
-    height: 80px;
-    padding: 0.4vh;
-    @include sticky-navbar(25px);
+    height: 70px;
+    @include sticky-navbar();
 
     @include mobile() {
       @include sticky-navbar(40px);
@@ -179,39 +178,38 @@
 
   }
 }
+@include mobile() {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 8px;
+  height: 670px; // Podrías cambiarlo a 80vh si quieres que la altura dependa de la ventana del navegador.
 
-@include mobile(){
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0 8px;
-    height: 670px;
-
-    .head-container {
-      .logo-container {
-        a{
+  .head-container {
+    .logo-container {
+      a {
         img {
-          height: 60px;
+          height: 8vh; // Usar vh aquí para que el tamaño del logo se ajuste según la altura de la ventana
         }
       }
-      }
+    }
 
-      a.icon {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 10px;
-        color: white;
-        border-radius: 50%;
-        position: absolute;
-        top: 45px;
-        right: 16px;
-      }
+    a.icon {
+      display: block;
+      font-size: 3vh; // Ajustar el tamaño del ícono también a la altura de la ventana
+      cursor: pointer;
+      padding: 10px;
+      color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 6vh; // Cambiar de px a vh para ajustar dinámicamente
+      right: 2vw; // Usar vw para que se ajuste también al ancho de la ventana
+    }
 
-      &:hover {
-        background-color: rgba(61, 59, 59, 0.9);
-      }
+    &:hover {
+      background-color: rgba(61, 59, 59, 0.9);
+    }
 
-      .options-container{
-        @include flex-container(row, flex-end, center);
+    .options-container {
+      @include flex-container(row, flex-end, center);
 
       .menu-container {
         a:not(.icon) {
@@ -222,7 +220,7 @@
           @include flex-container(column, flex-start, flex-end);
           background-color: black;
           position: absolute;
-          top: 75px;
+          top: 10vh; // Ajustar posición en base a vh
           padding: 5px;
           width: 100%;
           height: auto;
@@ -240,26 +238,24 @@
 
           a.icon {
             position: absolute;
-            right: 16px;
+            right: 2vw; // Ajustar con vw
             top: 0;
           }
         }
-
-        // Posicionamiento fijo del icono de búsqueda en responsive
-   
       }
 
+      // Posicionamiento fijo del icono de búsqueda en responsive
       .search-container {
         position: absolute;
-        right: 36px;
-        top: 55px; // Fijo en responsive para que no se mueva
-        width: auto; // Para evitar que se estire
+        right: 7vw; // Ajustar con vw
+        top: 7vh; // Cambiar a vh para mayor responsividad
+        width: auto;
 
         button {
           padding: 6px 10px;
           background-color: rgba(0, 0, 0, 0.2);
           color: white;
-          font-size: 17px;
+          font-size: 3vh; // Ajustar el tamaño de fuente con vh
           border: none;
           cursor: pointer;
           border-radius: 50%;
@@ -270,10 +266,9 @@
           }
 
           svg {
-            font-size: 20px;
+            font-size: 3vh; // Cambiar el tamaño del icono con vh
           }
         }
-
       }
 
       .search-container.active {
@@ -288,20 +283,18 @@
 
         input[type="text"] {
           display: block;
-       
           width: 100%;
           opacity: 1;
           padding: 6px;
-          font-size: 17px;
+          font-size: 2vh; // Ajustar el tamaño del input con vh
           border: none;
           background: #f1f1f1;
-          height: 25px;
+          height: 5vh; // Ajustar la altura del input con vh
         }
       }
-
-    }
-
     }
   }
+}
+
 }
 
