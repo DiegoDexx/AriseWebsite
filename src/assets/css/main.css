@@ -769,9 +769,10 @@ body .overlay {
 }
 @media only screen and (min-width: 360px) and (max-width: 460px) {
   .banner .banner-inner .banner-inner-image {
-    margin-top: 1.5rem;
-    width: 70%;
-    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    margin-top: 1rem;
+    width: 109%;
+    clip-path: polygon(25% 1%, 100% 0%, 75% 100%, 0% 100%);
+    height: 100%;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1600px) {

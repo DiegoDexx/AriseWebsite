@@ -158,9 +158,11 @@
  
        // Ajuste responsivo en pantallas más pequeñas
        @include mobile() {
-         margin-top: 1.5rem;
-         width: 70%; // Ajuste para mobile, imagen más pequeña
-         clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); // Ajuste clip-path en mobile
+        margin-top: 1rem;
+        width: 109%;
+        clip-path: polygon(25% 1%,100% 0%,75% 100%,0% 100%);
+        height: 100%;
+      
        }
  
        @include laptop() {
