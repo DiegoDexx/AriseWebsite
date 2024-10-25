@@ -61,7 +61,7 @@
   &.tertiary-navbar {
     background-color: rgba(0, 0, 0, 0.95);
     height: 70px;
-    @include sticky-navbar();
+    @include sticky-navbar(30px);
 
     @include mobile() {
       @include sticky-navbar(40px);

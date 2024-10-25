@@ -7,6 +7,7 @@ import QuantitySelector from '../components/quantitySelector';
 import { getProductSelection, saveItem, getItem } from '../functions/localStorage';
 import { getDiscount } from '../functions/functions';
 import ProductSlider from '../components/ProductSilder';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const ProductPage = () => {
   const { productId } = useParams();
@@ -252,7 +253,7 @@ const ProductPage = () => {
         <div className="sticky-reserve-button">
           {stockState === 'disponible' ? (
             <button className="reserve-button" onClick={handleReserve}>
-              Añadir al carrito
+              Añadir al carrito <FaShoppingCart />
             </button>
           ) : (
             <button className="reserve-button" onClick={handleOutOfStock}>

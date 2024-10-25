@@ -371,7 +371,7 @@ body .overlay {
   background-color: rgba(0, 0, 0, 0.95);
   height: 70px;
   position: sticky;
-  top: 0;
+  top: 30px;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -2103,7 +2103,7 @@ body .overlay {
 }
 @media (max-width: 800px) {
   .product-page .product-details h1 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: left;
     width: 100%;
   }
@@ -2347,6 +2347,7 @@ body .overlay {
   }
   .product-page h1 {
     margin: 0;
+    font-size: 26px;
   }
   .product-page .product-details {
     width: 90%;
@@ -2368,15 +2369,26 @@ body .overlay {
     align-items: flex-start;
   }
   .product-page .product-details .sticky-reserve-button {
-    align-self: center;
-    margin-bottom: 2vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    max-width: 100% !important;
+    width: 100%;
+    background-color: #ffffff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
   }
   .product-page .product-details .sticky-reserve-button .reserve-button {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    padding: 15px;
+    padding-bottom: 15px;
     font-weight: 600;
     font-size: 1.1rem;
+  }
+  .product-page .product-details .sticky-reserve-button .reserve-button svg {
+    margin-left: 10px;
   }
 }
 

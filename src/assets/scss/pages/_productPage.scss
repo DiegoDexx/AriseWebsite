@@ -94,7 +94,7 @@
       text-align: left;
       font-weight: 600;
       @media (max-width: 800px) {
-        font-size: 1rem;
+        font-size: 1.2rem;
         text-align: left;
         width: 100%;
       }
@@ -350,6 +350,7 @@
 
     h1 {
       margin: 0;
+      font-size: 26px;
     }
 
     .product-details {
@@ -378,17 +379,32 @@
 
     // Ancho fijo del botón en mobile
     .sticky-reserve-button {
-        align-self: center; // Centra el botón en el contenedor fijo
-        margin-bottom: 2vh;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      max-width: 100% !important;
+      width: 100%;
+      background-color: #ffffff;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      
 
 
 
       .reserve-button {
-        width: 90%; // Ajusta el ancho del botón dentro del contenedor fijo
+        width: 100%; // Ajusta el ancho del botón dentro del contenedor fijo
         margin: 0 auto; // Centra el botón
-        padding: 15px;
+        padding-bottom: 15px;
         font-weight: 600; // Un poco más gruesa para destacar en mobile
         font-size: 1.1rem;
+
+        svg {
+          margin-left: 10px;
+          
+        }
+
       }
     }
   }
